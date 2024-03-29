@@ -1,0 +1,27 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    background-color: transparent;
+    color: #ffffff;
+}
+
+.logo{
+
+}
+
+.navLinks{
+    display: flex;
+    gap: 2rem;
+}
+
+.navItem{
+    text-decoration: none;
+    // color: inherit;
+    font-weight: bold;
+}
+
+.socialLinks{
+
+}
