@@ -6,7 +6,7 @@ const Navbar = () => {
     return (
         <nav className={styles.navbar}>
             <div className={styles.logo}>
-                <Image src='/' alt="Logo" width={150} height={50} />
+                <Image src='/signature.png' alt="Logo" width={150} height={50} />
             </div>
             <div className={styles.navLinks}>
                 <Link href="/portfolio" legacyBehavior>

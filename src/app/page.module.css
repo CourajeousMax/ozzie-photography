@@ -1,0 +1,11 @@
+.main{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-image: url('/home-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+}
