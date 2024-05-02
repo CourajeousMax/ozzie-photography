@@ -4,29 +4,33 @@ import styles from '../styles/Navbar.module.css'
 
 const Navbar = () => {
     return (
-        <div className={styles.frameParent}>
-            <div className={styles.overviewPortfolioWorkshoWrapper}>
-                <div
-                    className={styles.overviewPortfolio}
-                >
-                    {`Portfolio / Workshops / About / Contact `}
-                </div>
+        <div className={styles.navContainer}>
+            <div className={styles.linkContainer}>
+                <Link legacyBehavior href="/portfolio"><a className={styles.navButton}>Portfolio</a></Link>
+                /
+                <Link legacyBehavior href="/workshops"><a className={styles.navButton}>Workshops</a></Link>
+                /
+                <Link legacyBehavior href="/about"><a className={styles.navButton}>About</a></Link>
+                /
+                <Link legacyBehavior href="/contact"><a className={styles.navButton}>Contact</a></Link>
             </div>
-            <div className={styles.frameWrapper}>
-                <div className={styles.groupParent}>
-                    <img
-                    className={styles.groupIcon}
+            <div className={styles.socialIcons}>
+                <Image 
+                    className={styles.socialIcon}
                     loading="lazy"
                     alt=""
-                    src="/group-1@2x.png"
-                    />
-                    <img
-                    className={styles.iconInstagram1}
-                    loading="lazy"
+                    src="/icons8-facebook-90.png"
+                    width={45}
+                    height={45}
+                />
+                <Image
+                    className={styles.socialIcon}
+                    loading='lazy'
                     alt=""
-                    src="/iconinstagram-1-1.svg"
-                    />
-                </div>
+                    src="/icons8-instagram-90.png"
+                    width={45}
+                    height={45}
+                />
             </div>
         </div>
     );
