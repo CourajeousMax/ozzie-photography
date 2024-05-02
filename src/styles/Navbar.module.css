@@ -1,0 +1,41 @@
+@font-face {
+  font-family: "Sedan SC";
+  src: url('../fonts/SedanSC-Regular.ttf') format('truetype');
+}
+
+.navContainer{
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  background-color: #fff;
+  width: 100%;
+  font-family: "Sedan SC";
+  gap: 75px;
+  font-size: 1.9rem;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-decoration: none;
+}
+
+.socialIcons{
+  display: flex;
+  gap: 20px;
+}
+
+.socialIcon{
+  width: 45px;
+  height: 45px;
+}
+
+.navButton{
+  color: #6e6e6e;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  
+}
+
+.linkContainer{
+  display: flex;
+  gap: 20px;
+}

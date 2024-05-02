@@ -1,42 +1,38 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import styles from '../styles/Navbar.module.scss';
+import styles from '../styles/Navbar.module.css'
 
 const Navbar = () => {
     return (
-        <nav className={styles.navbar}>
-            <div className={styles.logo}>
-                <Image src='/signature.png' alt="Logo" width={150} height={50} />
+        <div className={styles.navContainer}>
+            <div className={styles.linkContainer}>
+                <Link legacyBehavior href="/portfolio"><a className={styles.navButton}>Portfolio</a></Link>
+                /
+                <Link legacyBehavior href="/workshops"><a className={styles.navButton}>Workshops</a></Link>
+                /
+                <Link legacyBehavior href="/about"><a className={styles.navButton}>About</a></Link>
+                /
+                <Link legacyBehavior href="/contact"><a className={styles.navButton}>Contact</a></Link>
             </div>
-            <div className={styles.navLinks}>
-                <Link href="/portfolio" legacyBehavior>
-                    <a className={styles.navItem}>
-                        PORTFOLIO
-                    </a>
-                </Link>
-                <Link href="/workshops" legacyBehavior>
-                    <a className={styles.navItem}>
-                        WORKSHOPS
-                    </a>
-                </Link>
-                <Link href="/about" legacyBehavior>
-                    <a className={styles.navItem}>
-                        ABOUT
-                    </a>
-                </Link>
-                <Link href="/contact" legacyBehavior>
-                    <a className={styles.navItem}>
-                        CONTACT
-                    </a>
-                </Link>
+            <div className={styles.socialIcons}>
+                <Image 
+                    className={styles.socialIcon}
+                    loading="lazy"
+                    alt=""
+                    src="/icons8-facebook-90.png"
+                    width={45}
+                    height={45}
+                />
+                <Image
+                    className={styles.socialIcon}
+                    loading='lazy'
+                    alt=""
+                    src="/icons8-instagram-90.png"
+                    width={45}
+                    height={45}
+                />
             </div>
-            <div className={styles.socialLink}>
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-                </a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                </a>
-            </div>
-        </nav>
+        </div>
     );
 }
 
