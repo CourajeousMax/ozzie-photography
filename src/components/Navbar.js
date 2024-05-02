@@ -1,42 +1,34 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import styles from '../styles/Navbar.module.scss';
+import styles from '../styles/Navbar.module.css'
 
 const Navbar = () => {
     return (
-        <nav className={styles.navbar}>
-            <div className={styles.logo}>
-                <Image src='/signature.png' alt="Logo" width={150} height={50} />
+        <div className={styles.frameParent}>
+            <div className={styles.overviewPortfolioWorkshoWrapper}>
+                <div
+                    className={styles.overviewPortfolio}
+                >
+                    {`Portfolio / Workshops / About / Contact `}
+                </div>
             </div>
-            <div className={styles.navLinks}>
-                <Link href="/portfolio" legacyBehavior>
-                    <a className={styles.navItem}>
-                        PORTFOLIO
-                    </a>
-                </Link>
-                <Link href="/workshops" legacyBehavior>
-                    <a className={styles.navItem}>
-                        WORKSHOPS
-                    </a>
-                </Link>
-                <Link href="/about" legacyBehavior>
-                    <a className={styles.navItem}>
-                        ABOUT
-                    </a>
-                </Link>
-                <Link href="/contact" legacyBehavior>
-                    <a className={styles.navItem}>
-                        CONTACT
-                    </a>
-                </Link>
+            <div className={styles.frameWrapper}>
+                <div className={styles.groupParent}>
+                    <img
+                    className={styles.groupIcon}
+                    loading="lazy"
+                    alt=""
+                    src="/group-1@2x.png"
+                    />
+                    <img
+                    className={styles.iconInstagram1}
+                    loading="lazy"
+                    alt=""
+                    src="/iconinstagram-1-1.svg"
+                    />
+                </div>
             </div>
-            <div className={styles.socialLink}>
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-                </a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                </a>
-            </div>
-        </nav>
+        </div>
     );
 }
 
