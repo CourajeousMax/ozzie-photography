@@ -1,0 +1,57 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "mooli";
+}
+.about {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background: linear-gradient(#f8feff, #aad8a0, #608749, #0d1f03);
+  &__logo {
+    &-container {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+  }
+
+  &__title {
+    &-container {
+      padding: 1rem;
+    }
+  }
+  &__image {
+    &-container {
+      padding: 1rem;
+    }
+  }
+  &__text {
+    color: #f8feff;
+    line-height: 36px;
+    padding: 1rem;
+  }
+  &__subtitle {
+    padding: 1rem;
+    color: #9c5e00;
+  }
+  &__quote {
+    color: #f8feff;
+    padding: 1rem;
+    &-text {
+      color: #9c5e00;
+      padding: 1rem;
+    }
+  }
+  &__image {
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.yellow {
+  color: #f1b55b;
+  &-one {
+    color: #9c5e00;
+  }
+}
