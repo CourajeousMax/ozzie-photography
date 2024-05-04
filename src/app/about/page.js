@@ -1,24 +1,30 @@
 import React from "react";
+import Link from "next/link";
 import Image from "next/image";
 import Navbar from "../../components/Navbar";
 import Ozzie from "../../../public/ozzie-headshot.jpg";
 import Logo from "../../../public/signature-dark.png";
+
 import "../../styles/About.scss";
 const About = () => {
   return (
     <>
       <section className="about">
         <div className="about__logo-container">
-          <Image className="about__logo"src={Logo} alt="Ozzie's Logo" height={150} width={200}></Image>
+          <Link href="/">
+            <Image className="about__logo" src={Logo} alt="Ozzie's Logo" height={150} width={200}></Image>
+          </Link>
         </div>
         <Navbar />
-        <div className="about__title-container">
-          <h1 className="about__title yellow">Ozzie </h1>
-          <h1 className="about__title yellow-one"> Gonzalez</h1>
-          <h3 className="about__subtitle">Bilingual Photographer</h3>
-        </div>
-        <div className="about__image-container">
-          <Image className="about__image" src={Ozzie} width={300} height={300}></Image>
+        <div className="about__container">
+          <div className="about__title-container">
+            <h1 className="about__title yellow">Ozzie </h1>
+            <h1 className="about__title yellow-one"> Gonzalez</h1>
+            <h3 className="about__subtitle">Bilingual Photographer</h3>
+          </div>
+          <div className="about__image-container">
+            <Image className="about__image" src={Ozzie} width={300} height={300}></Image>
+          </div>
         </div>
         <div className="about__content">
           <h2 className="about__subtitle">Be it by Land or Sea </h2>

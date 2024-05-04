@@ -1,3 +1,5 @@
+@import "../styles/Variables.scss";
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -5,20 +7,37 @@
   font-family: "mooli";
 }
 .about {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+ @include center-column;
   background: linear-gradient(#f8feff, #aad8a0, #608749, #0d1f03);
+  &__content {
+    @include flex-start;
+  }
+  &__container {
+    @include tablet{
+      @include flex-reverse;
+      padding: 1.5rem
+
+    }
+    @include desktop {
+      @include flex-reverse;
+      padding: 3rem;
+    }
+  }
   &__logo {
     &-container {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
+      @include center-column;
     }
   }
 
   &__title {
+    @include tablet{
+      font-size: 2rem;
+    }
+    @include desktop {
+      font-size: 3rem;
+    }
     &-container {
+  @include center-column;
       padding: 1rem;
     }
   }
@@ -31,10 +50,20 @@
     color: #f8feff;
     line-height: 36px;
     padding: 1rem;
+      @include desktop {
+      font-size: 1.3rem;
+    }
   }
   &__subtitle {
+    @include center-column;
     padding: 1rem;
     color: #9c5e00;
+       @include tablet{
+      font-size: 2rem;
+    }
+    @include desktop {
+      font-size: 2.3rem;
+    }
   }
   &__quote {
     color: #f8feff;
@@ -42,6 +71,9 @@
     &-text {
       color: #9c5e00;
       padding: 1rem;
+        @include desktop {
+      font-size: 2rem;
+    }
     }
   }
   &__image {
