@@ -1,20 +1,14 @@
-@font-face {
-  font-family: "Sedan SC";
-  src: url('../fonts/SedanSC-Regular.ttf') format('truetype');
-}
+
 
 .navContainer{
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content:center;
   background-color: #fff;
   width: 100%;
-  font-family: "Sedan SC";
-  gap: 75px;
-  font-size: 1.9rem;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  text-decoration: none;
+  padding: 10px;
+  text-align: center;
 }
 
 .socialIcons{
@@ -23,19 +17,37 @@
 }
 
 .socialIcon{
-  width: 45px;
-  height: 45px;
+  width: 30px;
+  height: 30px;
 }
 
 .navButton{
-  color: #6e6e6e;
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-  
+  font-size: 1rem;
 }
 
 .linkContainer{
   display: flex;
-  gap: 20px;
+  flex-direction: row;
+  gap: 10px;
+}
+
+@media(min-width: 768px){
+  .navContainer{
+    flex-direction: row;
+    gap: 75px;
+  }
+
+  .linkContainer{
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .navButton{
+    font-size: 1.9rems;
+  }
+
+  .socialIcon{
+    width: 45px;
+    height: 45px;
+  }
 }
