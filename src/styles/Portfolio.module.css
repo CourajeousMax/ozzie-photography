@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Sedan+SC:wght@400&display=swap");
+
+
+
+
+.headerIcon, .imageIcon, .onAVineOzzieGonzalez1Icon, .daysEndOzzieGonzalez1Icon {
+  object-fit: cover;
+}
+.headerIcon, .onAVineOzzieGonzalez1Icon {
+  height: 7rem;
+  width: 19.25rem;
+}
+.headerWrapper, .imageTextWrapper, .imageGroup, .frameParent, .frameGroup, .onAVineOzzieGonzalez1Parent, .theSpotOzzieGonzalez1Parent, .daysEndOzzieGonzalez1Parent {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+}
+.imageIcon {
+  position: absolute;
+  width: 66.438rem;
+  height: 27.813rem;
+}
+.text, .textWrapper, .wildlifePortfolio, .galleriesByLocation, .lifestyleAndAdventure {
+  position:relative;
+  display: inline-block;
+  height: 3.125rem;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+.textWrapper, .textContainer {
+  top: 13.875rem;
+  left: 0;
+  background: linear-gradient(180deg, transparent, #000);
+}
+.mainInner, .desktopPortfolioCategories {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+}
+.mainInner {
+  padding: 0 var(--padding-xl);
+}
+.desktopPortfolioCategories {
+  width: 100%;
+  position:relative;
+  overflow:hidden;
+  flex-direction:column;
+  padding: 2.125rem 0 10.812rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), #000 99.99%, #fff, #000);
+}
+.textContainer {
+  cursor: pointer;
+  border:none;
+  padding: var(--padding-xl) var(--padding-5xs);
+  background: linear-gradient(180deg, transparent, #000);
+}
+@media screen and (max-width: 725px) {
+  .desktopPortfolioCategories {
+    gap: 1.188rem;
+  }
+}
