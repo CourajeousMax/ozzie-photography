@@ -12,6 +12,19 @@
   font-family: "Sedan SC";
   font-weight: 10;
 }
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
 .contact {
   background: linear-gradient(#f8feff, #aad8a0, #608749, #0d1f03);
+  &__logo-container{
+    @include center-column;
+  }
 }
