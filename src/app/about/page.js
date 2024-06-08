@@ -43,6 +43,7 @@ const About = () => {
           <h3 className="about__quote">One of his mother’s sayings that he loves:</h3>
           <h2 className="about__quote-text">‘There is only so many sunrise and sunsets to see in a life time so enjoy them.'</h2>
         </div>
+        
       </section>
     </>
   );

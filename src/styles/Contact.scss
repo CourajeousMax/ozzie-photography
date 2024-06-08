@@ -1,0 +1,77 @@
+@import "../styles/Variables.scss";
+
+@font-face {
+  font-family: "Sedan SC";
+  src: url("../fonts/SedanSC-Regular.ttf") format("truetype");
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Sedan SC";
+  font-weight: 10;
+}
+a{
+    color:#ccc;
+    text-decoration: none;
+}
+@media(min-width: 768px){
+ .contact__content{
+    @include center-column;
+ }
+ .contact__container, .contact__content{
+    padding: 1rem;
+ }
+ h1{
+    font-size: 2.5rem;
+ }
+ p{
+    font-size: 1.5rem;
+ }
+}
+button {
+    font-size: 1.2rem;
+  margin-top: 24px;
+  border: none;
+  width: 8rem;
+  height: 5vh;
+  background-color: #F1B55B;
+  color: black;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 25px 0px rgb(208, 139, 64);
+  }
+}
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+.contact {
+  background: linear-gradient(#f8feff, #aad8a0, #608749, #0d1f03);
+  &__logo-container{
+    @include center-column;
+  }
+  &__text{
+    color: #9C5E00;
+  }
+  &__paragraph{
+    color: white;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+}
+
+.contact__content{
+    @include center-column;
+ }
+ .contact__container, .contact__content{
+    padding: 1rem;
+ }
