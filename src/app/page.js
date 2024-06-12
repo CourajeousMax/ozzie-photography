@@ -1,12 +1,11 @@
 import Image from "next/image";
-import styles from "./page.module.css";
-import Navbar from "../components/Navbar";
+import styles from "@/styles/modules/page.module.css";
+import Navbar from "@/components/Navbar/Navbar";
 
 export default function Home() {
   return (
-
     <div className={styles.desktopOverview}>
-      <section className={styles.fullScreenBackground}/>
+      <section className={styles.fullScreenBackground} />
       <header className={styles.headerContent}>
         <Image
           className={styles.logo}
@@ -17,7 +16,7 @@ export default function Home() {
           height={112}
         />
       </header>
-      <Navbar/>
+      <Navbar />
     </div>
   );
 }

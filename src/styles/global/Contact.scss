@@ -1,8 +1,8 @@
-@import "../styles/Variables.scss";
+@import "../../styles/global/Variables.scss";
 
 @font-face {
   font-family: "Sedan SC";
-  src: url("../fonts/SedanSC-Regular.ttf") format("truetype");
+  src: url("../../fonts/SedanSC-Regular.ttf") format("truetype");
 }
 
 * {
@@ -12,31 +12,31 @@
   font-family: "Sedan SC";
   font-weight: 10;
 }
-a{
-    color:#ccc;
-    text-decoration: none;
+a {
+  color: #ccc;
+  text-decoration: none;
 }
-@media(min-width: 768px){
- .contact__content{
+@media (min-width: 768px) {
+  .contact__content {
     @include center-column;
- }
- .contact__container, .contact__content{
+  }
+  .contact__container, .contact__content {
     padding: 1rem;
- }
- h1{
+  }
+  h1 {
     font-size: 2.5rem;
- }
- p{
+  }
+  p {
     font-size: 1.5rem;
- }
+  }
 }
 button {
-    font-size: 1.2rem;
+  font-size: 1.2rem;
   margin-top: 24px;
   border: none;
   width: 8rem;
   height: 5vh;
-  background-color: #F1B55B;
+  background-color: #f1b55b;
   color: black;
 
   &:hover {
@@ -56,22 +56,21 @@ input {
 }
 .contact {
   background: linear-gradient(#f8feff, #aad8a0, #608749, #0d1f03);
-  &__logo-container{
+  &__logo-container {
     @include center-column;
   }
-  &__text{
-    color: #9C5E00;
+  &__text {
+    color: #9c5e00;
   }
-  &__paragraph{
+  &__paragraph {
     color: white;
     padding: 1rem;
     background-color: rgba(0, 0, 0, 0.8);
   }
 }
-
-.contact__content{
-    @include center-column;
- }
- .contact__container, .contact__content{
-    padding: 1rem;
- }
+.contact__content {
+  @include center-column;
+}
+.contact__container, .contact__content {
+  padding: 1rem;
+}

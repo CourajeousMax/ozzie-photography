@@ -1,0 +1,797 @@
+### ./jsconfig.json ###
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["./*"]
+    }
+  }
+}
+### ./README.md ###
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+## Getting Started
+
+First, run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### ./package.json ###
+{
+  "name": "ozzie",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "cloudinary": "^2.2.0",
+    "next": "^14.2.3",
+    "next-cloudinary": "^6.5.2",
+    "react": "^18",
+    "react-dom": "^18",
+    "sass": "^1.76.0"
+  },
+  "devDependencies": {
+    "@types/node": "20.12.11",
+    "@types/react": "18.3.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.1.4"
+  }
+}
+### ./src/app/workshops/page.js ###
+import Navbar from "@/components/Navbar/Navbar";
+import styles from "@/styles/modules/Portfolio.module.css";
+import React from "react";
+
+const workshops = () => {
+  return (
+    <div className={styles.desktopPortfolioCategories}>
+      <header className={styles.headerWrapper}>
+        <img className={styles.headerIcon} loading="lazy" alt="" src="/signature-dark.png" />
+      </header>
+      <Navbar />
+    </div>
+  );
+};
+
+export default workshops;
+### ./src/app/layout.js ###
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  );
+}
+### ./src/app/contact/page.js ###
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
+import Logo from "../../../public/signature-dark.png";
+import Navbar from "@/components/Navbar/Navbar";
+import ContactForm from "@/components/ContactForm/ContactForm";
+import "@/styles/global/Contact.scss";
+
+const page = () => {
+  return (
+    <>
+      <section className="contact">
+        <div className="contact__logo-container">
+          <Link href="/">
+            <Image className="contact__logo" src={Logo} alt="Ozzie's Logo" height={150} width={200} />
+          </Link>
+          <Navbar />
+        </div>
+        <div className="contact__content">
+          <div className="contact__container">
+            <h1 className="contact__text"> Let's navigate the seas of opportunity together!</h1>
+          </div>
+          <div className="contact__container">
+            <p className="contact__paragraph">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ullamcorper sapien ut mauris fermentum, vitae scelerisque urna dapibus.
+              Nulla facilisi. Integer id turpis nec nisi vehicula tempus. Morbi venenatis, justo eu placerat luctus, nulla libero fermentum tortor,
+              vitae dignissim dui turpis id risus. Nulla facilisi. Suspendisse at fringilla sapien. Quisque et massa nec nulla commodo ultrices. In
+              hac habitasse platea dictumst. Sed in aliquam libero. Vivamus nec felis ut ante tincidunt tempor. Curabitur aliquet efficitur sem, sit
+              amet consequat odio gravida a. Sed suscipit lacus vitae sapien tincidunt, at molestie eros tincidunt. Sed nec pharetra eros. Sed sodales
+              pharetra ex, vitae placerat lorem vehicula nec. Etiam tempor felis eu vehicula suscipit.
+            </p>
+          </div>
+        </div>
+
+        <article className="contact__content">
+          <form className="contact__form" action="https://formsubmit.co/esmeraldassaltyairretreat@gmail.com" method="POST">
+            <p>Drop anchor and send a message in a bottle our way, Sailor!</p>
+            <h2 className="contact__text">Contact Us</h2>
+            <div className="contact__container">
+              <ContactForm label="Name:" name="Name" type="text" id="name" />
+              <ContactForm label="Phone Number:" name="Phone Number" type="tel" id="phoneNumber" />
+              <ContactForm label="Email:" name="Email" type="email" id="email" />
+              <ContactForm label="Message:" name="Message" type="text" id="Message" />
+              <button className="contact__form-button button">
+                Set Sail
+              </button>
+            </div>
+          </form>
+        </article>
+        <div className="contact__content">
+          <h2 className="contact__text">Contact:</h2>
+          <a className="contact__subtext" href="tel:3055103802">
+            (305)-510-3802
+          </a>
+          <br />
+          <a className="contact__subtext" href="mailto: captozzie@hotmail.com">
+            captozzie@hotmail.com{" "}
+          </a>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default page;
+### ./src/app/page.js ###
+import Image from "next/image";
+import styles from "@/styles/modules/page.module.css";
+import Navbar from "@/components/Navbar/Navbar";
+
+export default function Home() {
+  return (
+    <div className={styles.desktopOverview}>
+      <section className={styles.fullScreenBackground} />
+      <header className={styles.headerContent}>
+        <Image
+          className={styles.logo}
+          loading="lazy"
+          alt=""
+          src="/signature.png"
+          width={300}
+          height={112}
+        />
+      </header>
+      <Navbar />
+    </div>
+  );
+}
+### ./src/app/about/page.js ###
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
+import Navbar from "@/components/Navbar/Navbar";
+import Logo from "../../../public/signature-dark.png";
+import "@/styles/global/About.scss";
+import Ozzie from "../../../public/ozzie-headshot.jpg"
+
+const About = () => {
+  return (
+    <>
+      <section className="about">
+        <div className="about__logo-container">
+          <Link href="/">
+            <Image className="about__logo" src={Logo} alt="Ozzie's Logo" height={150} width={200} />
+          </Link>
+        </div>
+        <Navbar />
+        <div className="about__container">
+          <div className="about__title-container">
+            <h1 className="about__title">Ozzie <br /> Gonzalez</h1>
+            <h3 className="about__subtitle">Bilingual Photographer</h3>
+          </div>
+          <div className="about__image-container">
+            <Image className="about__image" src={Ozzie} width={300} height={300} />
+          </div>
+        </div>
+        <div className="about__content">
+          <h2 className="about__subtitle">Be it by Land or Sea</h2>
+          <p className="about__text">
+            Capt. Ozzie Gonzalez is a seasoned outdoorsman with over 45 years of experience exploring the diverse landscapes of South Florida. From
+            guiding land-based hunting tours to captaining offshore and swamp charter boats, his passion for the outdoors is evident in everything he
+            does. Raised in the Coconut Grove area of Miami, his love for nature, particularly the Everglades, began at a young age. He developed a
+            deep respect for the wildlife and environment, spending his days fishing, hunting, and exploring the swamps. Capt. Ozzie's expertise
+            extends to wood carving, where his intimate knowledge of wildlife shines through in his detailed artwork. Whether leading tours or sharing
+            his stories through pictures, Capt. Ozzie is dedicated to educating and inspiring others about the beauty of South Florida's land and sea.
+            Whether you speak English or Spanish Capt. Ozzie is guaranteed to educate you with his knowledge and pictures of South Florida's land and
+            sea. He loves to have fun and make sure that everyone always wear a smile. It warms his heart to know when anyone purchases one of his
+            pieces of Art, you found the same joy and breath taking awe as he did that day taking the picture.
+          </p>
+        </div>
+        <div className="about__quote-container">
+          <h3 className="about__quote">One of his mother’s sayings that he loves:</h3>
+          <h2 className="about__quote-text">‘There is only so many sunrise and sunsets to see in a life time so enjoy them.'</h2>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default About;
+### ./src/app/portfolio/page.js ###
+import Navbar from "@/components/Navbar/Navbar";
+import styles from "@/styles/modules/Portfolio.module.css";
+import FrameComponent from "@/components/FrameComponent/FrameComponent";
+import React from "react";
+
+const DesktopPortfolioCategories = () => {
+  return (
+    <div className={styles.desktopPortfolioCategories}>
+      <header className={styles.headerWrapper}>
+        <img className={styles.headerIcon} loading="lazy" alt="" src="/signature-dark.png" />
+      </header>
+      <Navbar />
+      <div className={styles.imageTextWrapper}>
+        <img className={styles.imageIcon} alt="" src="/cursivewritingozziegonzalez-1@2x.png" />
+        <div className={styles.textWrapper}>{`Landscape Portfolio `}</div>
+      </div>
+      <main className={styles.mainInner}>
+        <section className={styles.imageGroup}>
+          <img className={styles.imageIcon} alt="" src="/cursivewritingozziegonzalez-1@2x.png" />
+          <button className={styles.textContainer}>
+            <div className={styles.text}>{`Landscape Portfolio `}</div>
+          </button>
+          <FrameComponent />
+        </section>
+      </main>
+    </div>
+  );
+};
+
+export default DesktopPortfolioCategories;
+### ./src/app/globals.css ###
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Sedan SC";
+  src: url('../fonts/SedanSC-Regular.ttf') format('truetype');
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+### ./src/styles/modules/page.module.css ###
+.desktopOverview {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+    text-decoration: none;
+}
+
+.fullScreenBackground {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: url('/home-background.jpg') no-repeat center center; 
+    background-size: cover;
+    z-index: -1;
+}
+
+.logo {
+    max-width: 300px;
+    height: auto;
+    z-index: 2;
+}
+
+.headerContent {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    z-index: 1;
+}
+### ./src/styles/modules/Portfolio.module.css ###
+@import url("https://fonts.googleapis.com/css2?family=Sedan+SC:wght@400&display=swap");
+
+.headerIcon, .imageIcon, .onAVineOzzieGonzalez1Icon, .daysEndOzzieGonzalez1Icon {
+  object-fit: cover;
+}
+.headerIcon, .onAVineOzzieGonzalez1Icon {
+  height: 7rem;
+  width: 19.25rem;
+}
+.headerWrapper, .imageTextWrapper, .imageGroup, .frameParent, .frameGroup, .onAVineOzzieGonzalez1Parent, .theSpotOzzieGonzalez1Parent, .daysEndOzzieGonzalez1Parent {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+}
+.imageIcon {
+  position: absolute;
+  width: 66.438rem;
+  height: 27.813rem;
+}
+.text, .textWrapper, .wildlifePortfolio, .galleriesByLocation, .lifestyleAndAdventure {
+  position:relative;
+  display: inline-block;
+  height: 3.125rem;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+.textWrapper, .textContainer {
+  top: 13.875rem;
+  left: 0;
+  background: linear-gradient(180deg, transparent, #000);
+}
+.mainInner, .desktopPortfolioCategories {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+}
+.mainInner {
+  padding: 0 var(--padding-xl);
+}
+.desktopPortfolioCategories {
+  width: 100%;
+  position:relative;
+  overflow:hidden;
+  flex-direction:column;
+  padding: 2.125rem 0 10.812rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), #000 99.99%, #fff, #000);
+}
+.textContainer {
+  cursor: pointer;
+  border:none;
+  padding: var(--padding-xl) var(--padding-5xs);
+  background: linear-gradient(180deg, transparent, #000);
+}
+@media screen and (max-width: 725px) {
+  .desktopPortfolioCategories {
+    gap: 1.188rem;
+  }
+}
+### ./src/styles/modules/About.module.scss ###
+.about {
+  background: linear-gradient(#000000, #842a03);
+  display: flex;
+  flex-direction: column-reverse;
+}
+### ./src/styles/global/Contact.scss ###
+@import "../../styles/global/Variables.scss";
+
+@font-face {
+  font-family: "Sedan SC";
+  src: url("../../fonts/SedanSC-Regular.ttf") format("truetype");
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Sedan SC";
+  font-weight: 10;
+}
+a {
+  color: #ccc;
+  text-decoration: none;
+}
+@media (min-width: 768px) {
+  .contact__content {
+    @include center-column;
+  }
+  .contact__container, .contact__content {
+    padding: 1rem;
+  }
+  h1 {
+    font-size: 2.5rem;
+  }
+  p {
+    font-size: 1.5rem;
+  }
+}
+button {
+  font-size: 1.2rem;
+  margin-top: 24px;
+  border: none;
+  width: 8rem;
+  height: 5vh;
+  background-color: #f1b55b;
+  color: black;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 25px 0px rgb(208, 139, 64);
+  }
+}
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+.contact {
+  background: linear-gradient(#f8feff, #aad8a0, #608749, #0d1f03);
+  &__logo-container {
+    @include center-column;
+  }
+  &__text {
+    color: #9c5e00;
+  }
+  &__paragraph {
+    color: white;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+}
+.contact__content {
+  @include center-column;
+}
+.contact__container, .contact__content {
+  padding: 1rem;
+}
+### ./src/styles/global/Variables.scss ###
+@mixin mobile {
+  @media (min-width: 20rem) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: 48rem) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 80rem) {
+    @content;
+  }
+}
+
+@mixin flex-reverse($align-items: center, $direction: row-reverse) {
+  display: flex;
+  align-items: $align-items;
+  flex-direction: $direction;
+}
+@mixin flex-start($align-items: flex-start, $direction: column) {
+  display: flex;
+  align-items: $align-items;
+  flex-direction: $direction;
+}
+
+@mixin center-column($align-items: center, $direction: column) {
+  display: flex;
+  align-items: $align-items;
+  flex-direction: $direction;
+}
+@mixin align-column($align-items: center, $direction: column) {
+  display: flex;
+  align-items: $align-items;
+  flex-direction: $direction;
+}
+### ./src/styles/global/About.scss ###
+@import "../../styles/global/Variables.scss";
+
+@font-face {
+  font-family: "Sedan SC";
+  src: url("../../fonts/SedanSC-Regular.ttf") format("truetype");
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Sedan SC";
+  font-weight: 10;
+}
+.about {
+  @include center-column;
+  background: linear-gradient(#f8feff, #aad8a0, #608749, #0d1f03);
+  &__content {
+    @include flex-start;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  &__container {
+    @include tablet {
+      @include flex-reverse;
+      padding: 1.5rem;
+    }
+    @include desktop {
+      @include flex-reverse;
+      padding: 3rem;
+    }
+  }
+  &__title-container {
+    @include center-column;
+    padding: 1rem;
+    @include tablet {
+      font-size: 2rem;
+    }
+    @include desktop {
+      font-size: 2.3rem;
+    }
+  }
+  &__title, &__subtitle, &__quote-text {
+    color: #9c5e00;
+  }
+  &__image-container,
+  &__text,
+  &__quote,
+  &__subtitle {
+    padding: 1rem;
+  }
+  &__text {
+    color: #f8feff;
+    line-height: 36px;
+    @include desktop {
+      font-size: 1.3rem;
+    }
+  }
+  &__subtitle {
+    @include center-column;
+    @include tablet {
+      font-size: 2rem;
+    }
+    @include desktop {
+      font-size: 2.3rem;
+    }
+  }
+  &__quote {
+    color: #f8feff;
+  }
+  &__quote-text {
+    padding: 0.75rem;
+  }
+  &__image {
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 1rem;
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about__top {
+    flex-direction: row;
+    gap: 100px;
+  }
+  .about__title {
+    font-size: 3rem;
+    text-align: center;
+  }
+  .about__subtitle, .about__content h2 {
+    font-size: 1.5rem;
+  }
+  .about__quote-text {
+    padding: 0.75rem;
+  }
+}
+### ./src/components/Navbar/Navbar.js ###
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
+import styles from "./Navbar.module.css";
+
+const navItems = [
+  { href: "/portfolio", label: "Portfolio" },
+  { href: "/workshops", label: "Workshops" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+];
+
+const socialLinks = [
+  {
+    href: "https://fineartamerica.com/profiles/ozzie-gonzalez",
+    src: "/icons8-facebook-90.png",
+    alt: "Facebook",
+  },
+  {
+    href: "https://www.instagram.com/artbyoz.photography/",
+    src: "/icons8-instagram-90.png",
+    alt: "Instagram",
+  },
+];
+
+const Navbar = () => {
+  return (
+    <div className={styles.navContainer}>
+      <div className={styles.linkContainer}>
+        {navItems.map((item, index) => (
+          <React.Fragment key={index}>
+            <Link legacyBehavior href={item.href}>
+              <a className={styles.navButton}>{item.label}</a>
+            </Link>
+            {index < navItems.length - 1 && "/"}
+          </React.Fragment>
+        ))}
+      </div>
+      <div className={styles.socialIcons}>
+        {socialLinks.map((link, index) => (
+          <a
+            key={index}
+            className="nav__link icon nav-items"
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image className={styles.socialIcon} loading="lazy" alt={link.alt} src={link.src} width={45} height={45} />
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Navbar;
+### ./src/components/Navbar/Navbar.module.css ###
+@font-face {
+  font-family: "Sedan SC";
+  src: url("../../fonts/SedanSC-Regular.ttf") format("truetype");
+}
+
+.navContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  width: 100%;
+  padding: 10px 20px;
+  text-align: center;
+  font-family: "Sedan SC";
+  text-decoration: none;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.socialIcon {
+  width: 30px;
+  height: 30px;
+}
+
+.navButton {
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: gray;
+}
+
+.linkContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  font-size: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .navContainer {
+    flex-direction: row;
+    gap: 75px;
+    padding: 10px 50px;
+  }
+
+  .linkContainer {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .navButton {
+    font-size: 1.5rem;
+  }
+
+  .socialIcon {
+    width: 45px;
+    height: 45px;
+  }
+
+  .socialIcons {
+    gap: 20px;
+  }
+}
+### ./src/components/ContactForm/ContactForm.module.css ###
+.inputBox {
+  margin-bottom: 16px;
+}
+
+.inputLabel {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.inputInput {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+### ./src/components/ContactForm/ContactForm.js ###
+import React from 'react';
+import styles from './ContactForm.module.css';
+
+const ContactForm = ({ label, name, type, id }) => {
+  return (
+    <div>
+      <div className={styles.inputBox}>
+        <label className={styles.inputLabel}>{label}</label>
+        <input type={type} name={name} placeholder={label} className={styles.inputInput} required />
+      </div>
+    </div>
+  );
+};
+
+export default ContactForm;
+### ./src/components/FrameComponent/FrameComponent.js ###
+import React from "react";
+import styles from "@/styles/modules/Portfolio.module.css";
+
+const frameItems = [
+  {
+    src: "/onavineozziegonzalez-1@2x.png",
+    label: "Wildlife portfolio",
+  },
+  {
+    src: "/thespotozziegonzalez-1@2x.png",
+    label: "Galleries by location",
+  },
+  {
+    src: "/daysendozziegonzalez-1@2x.png",
+    label: "Lifestyle and adventure portfolio",
+  },
+];
+
+const FrameComponent = () => {
+  return (
+    <div className={styles.frameParent}>
+      {frameItems.map((item, index) => (
+        <div key={index} className={styles.frameGroup}>
+          <img className={styles.onAVineOzzieGonzalez1Icon} alt="" src={item.src} />
+          <button className={styles.wildlifePortfolioWrapper}>
+            <div className={styles.wildlifePortfolio}>{item.label}</div>
+          </button>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default FrameComponent;

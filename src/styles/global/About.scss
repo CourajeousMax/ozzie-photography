@@ -1,8 +1,8 @@
-@import "../styles/Variables.scss";
+@import "../../styles/global/Variables.scss";
 
 @font-face {
   font-family: "Sedan SC";
-  src: url("../fonts/SedanSC-Regular.ttf") format("truetype");
+  src: url("../../fonts/SedanSC-Regular.ttf") format("truetype");
 }
 
 * {
@@ -39,9 +39,9 @@
       font-size: 2.3rem;
     }
   }
-  &__title, &__subtitle, &__quote-text{
-  color: #9c5e00;
-}
+  &__title, &__subtitle, &__quote-text {
+    color: #9c5e00;
+  }
   &__image-container,
   &__text,
   &__quote,
@@ -67,11 +67,9 @@
   &__quote {
     color: #f8feff;
   }
-
-  &__quote-text{
+  &__quote-text {
     padding: 0.75rem;
   }
-
   &__image {
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
     border-radius: 1rem;
@@ -80,22 +78,19 @@
   }
 }
 
-@media(max-width: 768px){
-  .about__top{
+@media (max-width: 768px) {
+  .about__top {
     flex-direction: row;
     gap: 100px;
   }
-
-  .about__title{
+  .about__title {
     font-size: 3rem;
     text-align: center;
   }
-
-  .about__subtitle, .about__content h2{
+  .about__subtitle, .about__content h2 {
     font-size: 1.5rem;
   }
-
-  .about__quote-text{
+  .about__quote-text {
     padding: 0.75rem;
   }
 }

@@ -1,8 +1,8 @@
-import Navbar from "@/components/Navbar";
-import styles from "../../styles/Portfolio.module.css";
+import Navbar from "@/components/Navbar/Navbar";
+import styles from "@/styles/modules/Portfolio.module.css";
 import React from "react";
 
-const workshops = () => {
+const Workshops = () => {
   return (
     <div className={styles.desktopPortfolioCategories}>
       <header className={styles.headerWrapper}>
@@ -13,4 +13,4 @@ const workshops = () => {
   );
 };
 
-export default workshops;
+export default Workshops;

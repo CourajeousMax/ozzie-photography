@@ -1,4 +1,4 @@
-.desktopOverview{
+.desktopOverview {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -10,7 +10,7 @@
     text-decoration: none;
 }
 
-.fullScreenBackground{
+.fullScreenBackground {
     position: fixed;
     left: 0;
     top: 0;
@@ -21,13 +21,13 @@
     z-index: -1;
 }
 
-.logo{
+.logo {
     max-width: 300px;
     height: auto;
     z-index: 2;
 }
 
-.headerContent{
+.headerContent {
     width: 100%;
     display: flex;
     justify-content: center;
