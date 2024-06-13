@@ -1,3 +1,113 @@
+➜  ozzie-photography git:(develop) ✗ npm run build
+npm start
+
+
+> ozzie@0.1.0 build
+> next build
+
+  ▲ Next.js 14.2.4
+
+   Creating an optimized production build ...
+ ⚠ For production Image Optimization with Next.js, the optional 'sharp' package is strongly recommended. Run 'npm i sharp', and Next.js will use it automatically for Image Optimization.
+Read more: https://nextjs.org/docs/messages/sharp-missing-in-production
+Failed to compile.
+
+./src/components/ContactForm/ContactForm.js
+Error: 
+  x You're importing a component that needs useState. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/wholesway/Documents/Programming/Projects/ozzie-photography/src/components/ContactForm/ContactForm.js:1:1]
+ 1 | import React, { useState } from 'react';
+   :                 ^^^^^^^^
+ 2 | import styles from './ContactForm.module.css';
+ 3 | 
+ 4 | const ContactForm = ({ label, name, type, id }) => {
+   `----
+
+Import trace for requested module:
+./src/components/ContactForm/ContactForm.js
+./src/app/contact/page.js
+
+
+> Build failed because of webpack errors
+
+> ozzie@0.1.0 start
+> next start
+
+  ▲ Next.js 14.2.4
+  - Local:        http://localhost:3000
+
+ ✓ Starting...
+Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+    at setupFsCheck (/Users/wholesway/Documents/Programming/Projects/ozzie-photography/node_modules/next/dist/server/lib/router-utils/filesystem.js:151:19)
+    at async initialize (/Users/wholesway/Documents/Programming/Projects/ozzie-photography/node_modules/next/dist/server/lib/router-server.js:61:23)
+    at async Server.<anonymous> (/Users/wholesway/Documents/Programming/Projects/ozzie-photography/node_modules/next/dist/server/lib/start-server.js:249:36)
+➜  ozzie-photography git:(develop) ✗ 
+
+This is a website I am working on. Please analyze the project structure, errors, and code carefully:
+
+.
+├── README.md
+├── __mocks__
+│   └── fileMock.js
+├── all_code.txt
+├── jest.config.js
+├── jest.setup.js
+├── jsconfig.json
+├── package-lock.json
+├── package.json
+├── problem.py
+├── public
+│   ├── home-background.jpg
+│   ├── icons8-facebook-90.png
+│   ├── icons8-instagram-90.png
+│   ├── next.svg
+│   ├── ozzie-headshot.jpg
+│   ├── signature-dark.png
+│   ├── signature.png
+│   └── vercel.svg
+└── src
+    ├── app
+    │   ├── about
+    │   │   └── page.js
+    │   ├── contact
+    │   │   ├── ContactPage.test.js
+    │   │   └── page.js
+    │   ├── favicon.ico
+    │   ├── globals.css
+    │   ├── layout.js
+    │   ├── page.js
+    │   ├── portfolio
+    │   │   └── page.js
+    │   └── workshops
+    │       └── page.js
+    ├── components
+    │   ├── ContactForm
+    │   │   ├── ContactForm.js
+    │   │   ├── ContactForm.module.css
+    │   │   └── ContactForm.test.js
+    │   ├── FrameComponent
+    │   │   └── FrameComponent.js
+    │   └── Navbar
+    │       ├── Navbar.js
+    │       ├── Navbar.module.css
+    │       └── Navbar.test.js
+    ├── fonts
+    │   └── SedanSC-Regular.ttf
+    └── styles
+        ├── global
+        │   ├── About.scss
+        │   ├── Contact.scss
+        │   └── Variables.scss
+        └── modules
+            ├── About.module.scss
+            ├── Portfolio.module.css
+            └── page.module.css
+
+17 directories, 40 files
+
 ### ./jsconfig.json ###
 {
   "compilerOptions": {
@@ -7,6 +117,24 @@
     }
   }
 }
+### ./__mocks__/fileMock.js ###
+module.exports = 'test-file-stub';
+### ./jest.setup.js ###
+require('@testing-library/jest-dom');
+### ./jest.config.js ###
+module.exports = {
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+  testPathIgnorePatterns: ['/node_modules/', '/.next/'],
+  moduleNameMapper: {
+    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
+    '\\.(jpg|jpeg|png|gif|webp|svg)$': '<rootDir>/__mocks__/fileMock.js',
+    '^@/(.*)$': '<rootDir>/src/$1',
+  },
+  testEnvironment: 'jest-environment-jsdom',
+  transform: {
+    '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
+  },
+};
 ### ./README.md ###
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
@@ -53,7 +181,10 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "cloudinary": "^2.2.0",
@@ -64,10 +195,20 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
     "sass": "^1.76.0"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.24.7",
+    "@babel/preset-react": "^7.24.7",
+    "@babel/preset-typescript": "^7.24.7",
+    "@testing-library/jest-dom": "^6.4.6",
+    "@testing-library/react": "^16.0.0",
+    "@testing-library/user-event": "^14.5.2",
     "@types/node": "20.12.11",
     "@types/react": "18.3.1",
+    "babel-jest": "^29.7.0",
     "eslint": "^8",
-    "eslint-config-next": "14.1.4"
+    "eslint-config-next": "14.1.4",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
   }
 }
 ### ./src/app/workshops/page.js ###
@@ -75,7 +216,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import styles from "@/styles/modules/Portfolio.module.css";
 import React from "react";
 
-const workshops = () => {
+const Workshops = () => {
   return (
     <div className={styles.desktopPortfolioCategories}>
       <header className={styles.headerWrapper}>
@@ -86,7 +227,7 @@ const workshops = () => {
   );
 };
 
-export default workshops;
+export default Workshops;
 ### ./src/app/layout.js ###
 import { Inter } from "next/font/google";
 
@@ -108,63 +249,93 @@ import Navbar from "@/components/Navbar/Navbar";
 import ContactForm from "@/components/ContactForm/ContactForm";
 import "@/styles/global/Contact.scss";
 
-const page = () => {
+const ContactPage = () => {
   return (
-    <>
-      <section className="contact">
-        <div className="contact__logo-container">
-          <Link href="/">
-            <Image className="contact__logo" src={Logo} alt="Ozzie's Logo" height={150} width={200} />
-          </Link>
-          <Navbar />
+    <section className="contact">
+      <div className="contact__logo-container">
+        <Link href="/">
+          <Image className="contact__logo" src={Logo} alt="Ozzie's Logo" height={150} width={200} />
+        </Link>
+        <Navbar />
+      </div>
+      <div className="contact__content">
+        <div className="contact__container">
+          <h1 className="contact__text">Let's navigate the seas of opportunity together!</h1>
         </div>
-        <div className="contact__content">
-          <div className="contact__container">
-            <h1 className="contact__text"> Let's navigate the seas of opportunity together!</h1>
-          </div>
-          <div className="contact__container">
-            <p className="contact__paragraph">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ullamcorper sapien ut mauris fermentum, vitae scelerisque urna dapibus.
-              Nulla facilisi. Integer id turpis nec nisi vehicula tempus. Morbi venenatis, justo eu placerat luctus, nulla libero fermentum tortor,
-              vitae dignissim dui turpis id risus. Nulla facilisi. Suspendisse at fringilla sapien. Quisque et massa nec nulla commodo ultrices. In
-              hac habitasse platea dictumst. Sed in aliquam libero. Vivamus nec felis ut ante tincidunt tempor. Curabitur aliquet efficitur sem, sit
-              amet consequat odio gravida a. Sed suscipit lacus vitae sapien tincidunt, at molestie eros tincidunt. Sed nec pharetra eros. Sed sodales
-              pharetra ex, vitae placerat lorem vehicula nec. Etiam tempor felis eu vehicula suscipit.
-            </p>
-          </div>
+        <div className="contact__container">
+          <p className="contact__paragraph">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ullamcorper sapien ut mauris fermentum, vitae scelerisque urna dapibus.
+            Nulla facilisi. Integer id turpis nec nisi vehicula tempus. Morbi venenatis, justo eu placerat luctus, nulla libero fermentum tortor,
+            vitae dignissim dui turpis id risus. Nulla facilisi. Suspendisse at fringilla sapien. Quisque et massa nec nulla commodo ultrices. In
+            hac habitasse platea dictumst. Sed in aliquam libero. Vivamus nec felis ut ante tincidunt tempor. Curabitur aliquet efficitur sem, sit
+            amet consequat odio gravida a. Sed suscipit lacus vitae sapien tincidunt, at molestie eros tincidunt. Sed nec pharetra eros. Sed sodales
+            pharetra ex, vitae placerat lorem vehicula nec. Etiam tempor felis eu vehicula suscipit.
+          </p>
         </div>
+      </div>
 
-        <article className="contact__content">
-          <form className="contact__form" action="https://formsubmit.co/esmeraldassaltyairretreat@gmail.com" method="POST">
-            <p>Drop anchor and send a message in a bottle our way, Sailor!</p>
-            <h2 className="contact__text">Contact Us</h2>
-            <div className="contact__container">
-              <ContactForm label="Name:" name="Name" type="text" id="name" />
-              <ContactForm label="Phone Number:" name="Phone Number" type="tel" id="phoneNumber" />
-              <ContactForm label="Email:" name="Email" type="email" id="email" />
-              <ContactForm label="Message:" name="Message" type="text" id="Message" />
-              <button className="contact__form-button button">
-                Set Sail
-              </button>
-            </div>
-          </form>
-        </article>
-        <div className="contact__content">
-          <h2 className="contact__text">Contact:</h2>
-          <a className="contact__subtext" href="tel:3055103802">
-            (305)-510-3802
-          </a>
-          <br />
-          <a className="contact__subtext" href="mailto: captozzie@hotmail.com">
-            captozzie@hotmail.com{" "}
-          </a>
-        </div>
-      </section>
-    </>
+      <article className="contact__content">
+        <form className="contact__form" action="https://formsubmit.co/esmeraldassaltyairretreat@gmail.com" method="POST">
+          <p>Drop anchor and send a message in a bottle our way, Sailor!</p>
+          <h2 className="contact__text">Contact Us</h2>
+          <div className="contact__container">
+            <ContactForm label="Name:" name="Name" type="text" id="name" />
+            <ContactForm label="Phone Number:" name="Phone Number" type="tel" id="phoneNumber" />
+            <ContactForm label="Email:" name="Email" type="email" id="email" />
+            <ContactForm label="Message:" name="Message" type="text" id="Message" />
+            <button className="contact__form-button button">Set Sail</button>
+          </div>
+        </form>
+      </article>
+      <div className="contact__content">
+        <h2 className="contact__text">Contact:</h2>
+        <a className="contact__subtext" href="tel:3055103802">(305)-510-3802</a>
+        <br />
+        <a className="contact__subtext" href="mailto:captozzie@hotmail.com">captozzie@hotmail.com</a>
+      </div>
+    </section>
   );
 };
 
-export default page;
+export default ContactPage;
+### ./src/app/contact/ContactPage.test.js ###
+import React from 'react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import ContactPage from './page';
+import '@testing-library/jest-dom';
+
+describe('ContactPage', () => {
+  test('renders contact page correctly', () => {
+    render(<ContactPage />);
+    const heading = screen.getByText(/Let's navigate the seas of opportunity together!/i);
+    expect(heading).toBeInTheDocument();
+    const formHeading = screen.getByText(/Contact Us/i);
+    expect(formHeading).toBeInTheDocument();
+    const phoneNumber = screen.getByText(/\(305\)-510-3802/i);
+    expect(phoneNumber).toBeInTheDocument();
+  });
+
+  test('submits the contact form', () => {
+    render(<ContactPage />);
+    const nameInput = screen.getByLabelText(/Name:/i);
+    const phoneNumberInput = screen.getByLabelText(/Phone Number:/i);
+    const emailInput = screen.getByLabelText(/Email:/i);
+    const messageInput = screen.getByLabelText(/Message:/i);
+    const submitButton = screen.getByText(/Set Sail/i);
+
+    fireEvent.change(nameInput, { target: { value: 'John Doe' } });
+    fireEvent.change(phoneNumberInput, { target: { value: '1234567890' } });
+    fireEvent.change(emailInput, { target: { value: 'john.doe@example.com' } });
+    fireEvent.change(messageInput, { target: { value: 'Hello, this is a test message.' } });
+
+    fireEvent.click(submitButton);
+
+    expect(nameInput.value).toBe('John Doe');
+    expect(phoneNumberInput.value).toBe('1234567890');
+    expect(emailInput.value).toBe('john.doe@example.com');
+    expect(messageInput.value).toBe('Hello, this is a test message.');
+  });
+});
 ### ./src/app/page.js ###
 import Image from "next/image";
 import styles from "@/styles/modules/page.module.css";
@@ -195,47 +366,45 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar/Navbar";
 import Logo from "../../../public/signature-dark.png";
 import "@/styles/global/About.scss";
-import Ozzie from "../../../public/ozzie-headshot.jpg"
+import Ozzie from "../../../public/ozzie-headshot.jpg";
 
 const About = () => {
   return (
-    <>
-      <section className="about">
-        <div className="about__logo-container">
-          <Link href="/">
-            <Image className="about__logo" src={Logo} alt="Ozzie's Logo" height={150} width={200} />
-          </Link>
+    <section className="about">
+      <div className="about__logo-container">
+        <Link href="/">
+          <Image className="about__logo" src={Logo} alt="Ozzie's Logo" height={150} width={200} />
+        </Link>
+      </div>
+      <Navbar />
+      <div className="about__container">
+        <div className="about__title-container">
+          <h1 className="about__title">Ozzie <br /> Gonzalez</h1>
+          <h3 className="about__subtitle">Bilingual Photographer</h3>
         </div>
-        <Navbar />
-        <div className="about__container">
-          <div className="about__title-container">
-            <h1 className="about__title">Ozzie <br /> Gonzalez</h1>
-            <h3 className="about__subtitle">Bilingual Photographer</h3>
-          </div>
-          <div className="about__image-container">
-            <Image className="about__image" src={Ozzie} width={300} height={300} />
-          </div>
+        <div className="about__image-container">
+          <Image className="about__image" src={Ozzie} width={300} height={300} />
         </div>
-        <div className="about__content">
-          <h2 className="about__subtitle">Be it by Land or Sea</h2>
-          <p className="about__text">
-            Capt. Ozzie Gonzalez is a seasoned outdoorsman with over 45 years of experience exploring the diverse landscapes of South Florida. From
-            guiding land-based hunting tours to captaining offshore and swamp charter boats, his passion for the outdoors is evident in everything he
-            does. Raised in the Coconut Grove area of Miami, his love for nature, particularly the Everglades, began at a young age. He developed a
-            deep respect for the wildlife and environment, spending his days fishing, hunting, and exploring the swamps. Capt. Ozzie's expertise
-            extends to wood carving, where his intimate knowledge of wildlife shines through in his detailed artwork. Whether leading tours or sharing
-            his stories through pictures, Capt. Ozzie is dedicated to educating and inspiring others about the beauty of South Florida's land and sea.
-            Whether you speak English or Spanish Capt. Ozzie is guaranteed to educate you with his knowledge and pictures of South Florida's land and
-            sea. He loves to have fun and make sure that everyone always wear a smile. It warms his heart to know when anyone purchases one of his
-            pieces of Art, you found the same joy and breath taking awe as he did that day taking the picture.
-          </p>
-        </div>
-        <div className="about__quote-container">
-          <h3 className="about__quote">One of his mother’s sayings that he loves:</h3>
-          <h2 className="about__quote-text">‘There is only so many sunrise and sunsets to see in a life time so enjoy them.'</h2>
-        </div>
-      </section>
-    </>
+      </div>
+      <div className="about__content">
+        <h2 className="about__subtitle">Be it by Land or Sea</h2>
+        <p className="about__text">
+          Capt. Ozzie Gonzalez is a seasoned outdoorsman with over 45 years of experience exploring the diverse landscapes of South Florida. From
+          guiding land-based hunting tours to captaining offshore and swamp charter boats, his passion for the outdoors is evident in everything he
+          does. Raised in the Coconut Grove area of Miami, his love for nature, particularly the Everglades, began at a young age. He developed a
+          deep respect for the wildlife and environment, spending his days fishing, hunting, and exploring the swamps. Capt. Ozzie's expertise
+          extends to wood carving, where his intimate knowledge of wildlife shines through in his detailed artwork. Whether leading tours or sharing
+          his stories through pictures, Capt. Ozzie is dedicated to educating and inspiring others about the beauty of South Florida's land and sea.
+          Whether you speak English or Spanish Capt. Ozzie is guaranteed to educate you with his knowledge and pictures of South Florida's land and
+          sea. He loves to have fun and make sure that everyone always wears a smile. It warms his heart to know when anyone purchases one of his
+          pieces of Art, you found the same joy and breath-taking awe as he did that day taking the picture.
+        </p>
+      </div>
+      <div className="about__quote-container">
+        <h3 className="about__quote">One of his mother’s sayings that he loves:</h3>
+        <h2 className="about__quote-text">‘There is only so many sunrises and sunsets to see in a lifetime so enjoy them.'</h2>
+      </div>
+    </section>
   );
 };
 
@@ -602,6 +771,33 @@ input {
     padding: 0.75rem;
   }
 }
+### ./src/components/Navbar/Navbar.test.js ###
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import Navbar from './Navbar';
+import '@testing-library/jest-dom';
+
+describe('Navbar', () => {
+  test('renders nav items correctly', () => {
+    render(<Navbar />);
+    const portfolioLink = screen.getByText(/Portfolio/i);
+    expect(portfolioLink).toBeInTheDocument();
+    const workshopsLink = screen.getByText(/Workshops/i);
+    expect(workshopsLink).toBeInTheDocument();
+    const aboutLink = screen.getByText(/About/i);
+    expect(aboutLink).toBeInTheDocument();
+    const contactLink = screen.getByText(/Contact/i);
+    expect(contactLink).toBeInTheDocument();
+  });
+
+  test('renders social links correctly', () => {
+    render(<Navbar />);
+    const facebookIcon = screen.getByAltText(/Facebook/i);
+    expect(facebookIcon).toBeInTheDocument();
+    const instagramIcon = screen.getByAltText(/Instagram/i);
+    expect(instagramIcon).toBeInTheDocument();
+  });
+});
 ### ./src/components/Navbar/Navbar.js ###
 import React from "react";
 import Link from "next/link";
@@ -728,6 +924,25 @@ export default Navbar;
     gap: 20px;
   }
 }
+### ./src/components/ContactForm/ContactForm.test.js ###
+import React from 'react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import ContactForm from './ContactForm';
+
+describe('ContactForm', () => {
+  test('renders input with correct label', () => {
+    render(<ContactForm label="Name:" name="Name" type="text" id="name" />);
+    const inputElement = screen.getByLabelText(/Name:/i);
+    expect(inputElement).toBeInTheDocument();
+  });
+
+  test('updates value on change', () => {
+    render(<ContactForm label="Name:" name="Name" type="text" id="name" />);
+    const inputElement = screen.getByLabelText(/Name:/i);
+    fireEvent.change(inputElement, { target: { value: 'John Doe' } });
+    expect(inputElement.value).toBe('John Doe');
+  });
+});
 ### ./src/components/ContactForm/ContactForm.module.css ###
 .inputBox {
   margin-bottom: 16px;
@@ -745,16 +960,25 @@ export default Navbar;
   border-radius: 4px;
 }
 ### ./src/components/ContactForm/ContactForm.js ###
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './ContactForm.module.css';
 
 const ContactForm = ({ label, name, type, id }) => {
+  const [value, setValue] = useState('');
+
   return (
-    <div>
-      <div className={styles.inputBox}>
-        <label className={styles.inputLabel}>{label}</label>
-        <input type={type} name={name} placeholder={label} className={styles.inputInput} required />
-      </div>
+    <div className={styles.inputBox}>
+      <label className={styles.inputLabel} htmlFor={id}>{label}</label>
+      <input
+        id={id}
+        type={type}
+        name={name}
+        placeholder={label}
+        className={styles.inputInput}
+        required
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
     </div>
   );
 };
