@@ -10,10 +10,12 @@
   },
   "dependencies": {
     "cloudinary": "^2.2.0",
+    "lightgallery": "^2.7.2",
     "next": "^14.2.3",
     "next-cloudinary": "^6.5.2",
     "react": "^18",
     "react-dom": "^18",
+    "react-photo-album": "^2.4.0",
     "sass": "^1.76.0"
   },
   "devDependencies": {
