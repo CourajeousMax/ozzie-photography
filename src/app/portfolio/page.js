@@ -1,30 +1,31 @@
-import Navbar from "@/components/Navbar/Navbar";
-import styles from "@/styles/modules/Portfolio.module.css";
-import FrameComponent from "@/components/FrameComponent/FrameComponent";
-import React from "react";
+"use client"; // Add this line at the top
 
-const DesktopPortfolioCategories = () => {
+import React, { useState } from 'react';
+import Navbar from "@/components/Navbar/Navbar";
+import dynamic from 'next/dynamic';
+import ImageUpload from "@/components/ImageUpload/ImageUpload";
+import styles from "@/styles/modules/Portfolio.module.css";
+
+// Use dynamic import for LightGallery with ssr: false
+const LightGallery = dynamic(() => import('@/components/LightGallery/LightGallery'), { ssr: false });
+
+const PortfolioPage = () => {
+  const [images, setImages] = useState([]);
+
+  const handleImageUpload = (url) => {
+    setImages([...images, { src: url, thumb: url }]);
+  };
+
   return (
     <div className={styles.desktopPortfolioCategories}>
       <header className={styles.headerWrapper}>
         <img className={styles.headerIcon} loading="lazy" alt="" src="/signature-dark.png" />
       </header>
       <Navbar />
-      <div className={styles.imageTextWrapper}>
-        <img className={styles.imageIcon} alt="" src="/cursivewritingozziegonzalez-1@2x.png" />
-        <div className={styles.textWrapper}>{`Landscape Portfolio `}</div>
-      </div>
-      <main className={styles.mainInner}>
-        <section className={styles.imageGroup}>
-          <img className={styles.imageIcon} alt="" src="/cursivewritingozziegonzalez-1@2x.png" />
-          <button className={styles.textContainer}>
-            <div className={styles.text}>{`Landscape Portfolio `}</div>
-          </button>
-          <FrameComponent />
-        </section>
-      </main>
+      <ImageUpload onUpload={handleImageUpload} />
+      <LightGallery images={images} />
     </div>
   );
 };
 
-export default DesktopPortfolioCategories;
+export default PortfolioPage;
