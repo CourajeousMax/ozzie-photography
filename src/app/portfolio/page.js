@@ -1,5 +1,4 @@
 import Image from "next/image.js";
-import Link from "next/link.js";
 import Navbar from "../../components/Navbar.js";
 import styles from "../../styles/Portfolio.module.css";
 import Writing from "../../../public/cursive-writing-ozzie-gonzalez.jpg";
@@ -13,25 +12,39 @@ const DesktopPortfolioCategories = () => {
         <img className={styles.headerIcon} loading="lazy" alt="" src="/signature-dark.png" />
       </header>
       <Navbar />
-      <div className={styles.imageTextWrapper}>
-        <Image className={styles.imageIcon} alt="" src={Writing} width={400} height={500} />
-        <div className={styles.onAVineOzzieGonzalez1Parent}>
-          <Link href="/">
-            <button className={styles.textWrapper}>Landscape portfolio</button>
-          </Link>
+      <div className={styles.masonry}>
+        <div className={styles.masonryColumns}>
+          <div className={styles.imageTextWrapper}>
+            <a href="/landscape">
+              <Image className={styles.imageIcon} alt="" src={Writing} width={400} height={500} />
+            </a>
+            <p className={styles.textWrapper}>Landscape portfolio</p>
+          </div>
         </div>
-      </div>
-      <div className={styles.imageTextWrapper}>
-        <Image className={styles.imageIcon} alt="" src={Vine} width={400} height={300} />
-        <p className={styles.textWrapper}>Wildlife portfolio</p>
-      </div>
-      <div className={styles.imageTextWrapper}>
-        <Image className={styles.imageIcon} alt="" src={Spot} width={400} height={300} />
-        <p className={styles.textWrapper}>Galleries by location</p>
-      </div>
-      <div className={styles.imageTextWrapper}>
-        <Image className={styles.imageIcon} alt="" src={Days} width={400} height={300} />
-        <p className={styles.textWrapper}>Lifestyle and Adventure portfolio</p>
+        <div className={styles.masonryColumns}>
+          <div className={styles.imageTextWrapper}>
+            <a href="/wildlife">
+              <Image className={styles.imageIcon} alt="" src={Vine} width={200} height={300} />
+            </a>
+            <p className={styles.textWrapper}>Wildlife portfolio</p>
+          </div>
+        </div>
+        <div className={styles.masonryColumns}>
+          <div className={styles.imageTextWrapper}>
+            <a href="/galleries">
+              <Image className={styles.imageIcon} alt="" src={Spot} width={400} height={300} />
+            </a>
+            <p className={styles.textWrapper}>Galleries by location</p>
+          </div>
+        </div>
+        <div className={styles.masonryColumns}>
+          <div className={styles.imageTextWrapper}>
+            <a href="/lifestyle">
+              <Image className={styles.imageIcon} alt="" src={Days} width={400} height={300} />
+            </a>
+            <p className={styles.textWrapper}>Lifestyle and Adventure portfolio</p>
+          </div>
+        </div>
       </div>
       {/* //   <div className={styles.textWrapper}>{`Landscape Portfolio `}</div>
       // </div>
