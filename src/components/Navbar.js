@@ -6,6 +6,10 @@ const Navbar = () => {
   return (
     <div className={styles.navContainer}>
       <div className={styles.linkContainer}>
+        <Link legacyBehavior href="/">
+          <a className={styles.navButton}>home</a>
+        </Link>
+        /
         <Link legacyBehavior href="/portfolio">
           <a className={styles.navButton}>Portfolio</a>
         </Link>

@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import Navbar from "@/components/Navbar";
+import Navbar from "../../components/Navbar";
 import styles from "../../styles/Portfolio.module.css";
 import silentRoad from "../../../public/silent-road.jpg"
 import roadtoSerenity from "../../../public/road-to-serenity.jpg";
