@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@nextui-org/button": "^2.0.37",
+    "@nextui-org/dropdown": "^2.1.29",
     "cloudinary": "^2.2.0",
     "lightgallery": "^2.7.2",
     "next": "^14.2.3",
@@ -16,7 +18,8 @@
     "react": "^18",
     "react-burger-menu": "^3.0.9",
     "react-dom": "^18",
-    "react-photo-album": "^2.4.0",
+    "react-masonry-css": "^1.0.16",
+    "react-photo-album": "^2.4.1",
     "sass": "^1.76.0"
   },
   "devDependencies": {

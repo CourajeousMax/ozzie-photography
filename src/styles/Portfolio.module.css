@@ -1,52 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Sedan+SC:wght@400&display=swap");
 
-.headerIcon,
-.imageIcon,
-.onAVineOzzieGonzalez1Icon,
-.daysEndOzzieGonzalez1Icon {
+
+.header {
+display: flex;
+}
+.headerIcon {
   object-fit: cover;
-}
-.headerIcon,
-.onAVineOzzieGonzalez1Icon {
   height: 5rem;
-  width: 4rem;
 }
-.headerWrapper,
-.imageTextWrapper,
-.imageGroup,
-.frameParent,
-.frameGroup,
-.onAVineOzzieGonzalez1Parent,
-.theSpotOzzieGonzalez1Parent,
-.daysEndOzzieGonzalez1Parent {
-  display: flex;
-  /* flex-direction: column;
-  align-items: flex-start;
-  justify-content: center; */
-  gap: 1rem;
-  align-items: flex-end;
-}
-.imageIcon {
-  position: relative;
-  width: 66.438rem;
-  height: 27.813rem;
-}
-.text,
-.textWrapper,
-.wildlifePortfolio,
-.galleriesByLocation,
-.lifestyleAndAdventure {
-  display: inline-block;
-  height: 3.125rem;
-  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-}
-.textWrapper,
-.textContainer {
-  /* left: 0; */
-  position: absolute;
-  color: white;
-  background: linear-gradient(180deg, transparent, #000);
-}
+
+
 .mainInner,
 .desktopPortfolioCategories {
   display: flex;
@@ -65,12 +28,7 @@
   background: linear-gradient(180deg, rgba(23, 23, 23, 0.96), #000 99.99%, #fff, #000);
   gap: 1rem;
 }
-.textContainer {
-  cursor: pointer;
-  border: none;
-  padding: var(--padding-xl) var(--padding-5xs);
-  background: linear-gradient(180deg, transparent, #000);
-}
+
 
 .masonry {
   display: flex;
@@ -84,22 +42,15 @@
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 2rem;
 }
-.masonryColumns {
-  display: flex;
-  flex-flow: column;
-  align-items: flex-start;
-  width: calc(19.999% - 19.617px);
-  justify-content: flex-end;
-}
 
 @media screen and (max-width: 725px) {
   .desktopPortfolioCategories {
     gap: 1.188rem;
   }
   .gridColumns {
-    display: grid;
-    grid-template-columns: repeat(1, minmax(0, 1fr));
-    gap: 4rem;
+   display: grid;                                                /* 1 */
+  grid-auto-rows: 50px;                                         /* 2 */                                           /* 3 */
+  grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
   }
   .masonry {
     display: flex;
@@ -108,11 +59,5 @@
     padding: 2rem;
     justify-content: space-between;
   }
-  .masonryColumns {
-    display: flex;
-    flex-flow: column;
-    align-items: flex-start;
-    width: calc(19.999% - 19.617px);
-    justify-content: flex-end;
-  }
+
 }
