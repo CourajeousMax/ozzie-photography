@@ -32,17 +32,15 @@ const page = () => {
         </div>
 
         <article className="contact__content">
-          <form className="contact__form" action="https://formsubmit.co/esmeraldassaltyairretreat@gmail.com" method="POST">
-            <p>Drop anchor and send a message in a bottle our way, Sailor!</p>
+          <form className="contact__form" action="https://formsubmit.co/7d373894c22552f7b2056bcfa9178c5b" method="POST">
+            <p>Send a message in a bottle our way!</p>
             <h2 className="contact__text">Contact Us</h2>
             <div className="contact__container">
               <ContactForm label="Name:" name="Name" type="text" id="name" />
               <ContactForm label="Phone Number:" name="Phone Number" type="tel" id="phoneNumber" />
               <ContactForm label="Email:" name="Email" type="email" id="email" />
               <ContactForm label="Message:" name="Message" type="text" id="Message" />
-              <button className="contact__form-button button">
-                Set Sail
-              </button>
+              <button className="contact__form-button button">Set Sail</button>
             </div>
           </form>
         </article>

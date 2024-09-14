@@ -12,26 +12,32 @@
   font-family: "Sedan SC";
   font-weight: 10;
 }
-.page__container, .image__container {
-    @include center-column;
-    gap: 2rem;
-    padding: 1rem;
-  }
-  .page__text {
-    font-size: 1rem;
-    line-height: 1.3rem;
-  }
-   .page__content {
-    color: white;
-    background-color: rgba(0, 0, 0, 0.8);
-    margin: 1rem;
-    padding: 1.5rem;
-  }
-   .image__card {
-    object-fit: cover;
-  }
+.page__title {
+  color: whitesmoke;
+  font-size: 3.5rem;
+}
+.page__container,
+.image__container {
+  @include center-column;
+  gap: 2rem;
+  padding: 1rem;
+}
+.page__text {
+  font-size: 2rem;
+  line-height: 1em;
+}
+.page__content {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.8);
+  margin: 1rem;
+  padding: 1.5rem;
+}
+.image__card {
+  object-fit: cover;
+}
 @media (min-width: 768px) {
-  .page__container, .image__container {
+  .page__container,
+  .image__container {
     @include flex-row;
     gap: 6rem;
     padding: 3rem;
@@ -44,6 +50,6 @@
   }
   .page__text {
     font-size: 1.3rem;
-    line-height: 1.5rem;
+    line-height: 2.8rem;
   }
 }

@@ -16,7 +16,9 @@ const workshops = () => {
         </header>
         <Navbar />
         <div className="page__container">
-          <h1>Discover the Art and Craft of Photography</h1>
+          <h1 className="page__title">
+            Discover the Art <br/> and Craft <br/> of <span style={{ color: "#0058DD" }}>Photography</span>
+          </h1>
           <div className="page__header">
             <div className="image__container">
               <Image className="image__card" src={silentRoad} alt="grayscale of trees and rivers" height={300} width={200} />
@@ -27,13 +29,13 @@ const workshops = () => {
         </div>
         <div className="page__content">
           <p className="page__text">
-            My workshops provide a supportive environment for growth and learning. Through a blend of theoretical insights, practical demonstrations,
-            and hands-on shooting sessions, you'll gain the knowledge and confidence to capture stunning images. 
+            My workshops provide a supportive environment for growth and learning. <br/>Through a blend of theoretical insights, practical demonstrations,
+            and hands-on shooting sessions, you'll gain the knowledge and confidence to capture stunning images.
           </p>
           <p className="page__text">
             Join our vibrant community of fellow shutterbugs and embark on an exciting journey of creativity and discovery.
           </p>
-         <p className="page__text">Browse my upcoming workshops and reserve your spot today. Let's capture unforgettable moments together!</p>
+          <p className="page__text">Browse my upcoming workshops and reserve your spot today. Let's capture unforgettable moments together!</p>
         </div>
       </div>
     </>
