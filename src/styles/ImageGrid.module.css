@@ -1,17 +1,23 @@
-
 .gridItem {
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  display: block; /* Change from flex to block */
 }
 
 .gridItem:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  z-index: 1;
 }
 
 .image {
   width: 100%;
-  height: auto;
+  height: auto; /* This will maintain aspect ratio */
+  display: block; /* This ensures no extra space */
+  object-fit: contain; /* Change from cover to contain */
   border-radius: 8px;
-  object-fit: cover;
 }

@@ -1,68 +1,86 @@
-@font-face {
-  font-family: "Sedan SC";
-  src: url("../fonts/SedanSC-Regular.ttf") format("truetype");
-}
-
-.navContainer{
+.header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content:center;
-  background-color: #fff;
   width: 100%;
-  padding: 10px 20px;
+  background-color: #fff;
+  padding: 20px 0;
+}
+
+.logoContainer {
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 200px;
+  height: auto;
+}
+
+.navContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0 20px;
   text-align: center;
   font-family: "Sedan SC";
   text-decoration: none;
 }
 
-.socialIcons{
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-}
-
-.socialIcon{
-  width: 30px;
-  height: 30px;
-}
-
-.navButton{
-  font-size: 1.5rem;
-  text-decoration: none;
-  color: gray;
-}
-
-.linkContainer{
+.navContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5px;
+  justify-content: center;
+  background-color: #fff;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  font-family: "Sedan SC";
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.socialIcon {
+  width: 45px;
+  height: 45px;
+}
+
+.navButton {
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: gray;
+  padding: 0 10px;
+}
+
+.linkContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
   font-size: 1.5rem;
 }
 
-@media(min-width: 768px){
-  .navContainer{
-    flex-direction: row;
-    gap: 75px;
-    padding: 10px 50px;
+@media (max-width: 768px) {
+  .linkContainer {
+    flex-direction: column;
+    gap: 15px;
   }
 
-  .linkContainer{
-    flex-direction: row;
-    gap: 20px;
+  .socialIcon {
+    width: 35px;
+    height: 35px;
   }
 
-  .navButton{
-    font-size: 1.5rem;
-  }
-
-  .socialIcon{
-    width: 45px;
-    height: 45px;
-  }
-
-  .socialIcons{
-    gap: 20px;
+  .socialIcons {
+    gap: 15px;
   }
 }

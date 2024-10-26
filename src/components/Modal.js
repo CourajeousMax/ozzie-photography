@@ -1,9 +1,11 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../styles/Modal.module.css";
 
 const Modal = ({ isOpen, onClose, imageSrc, imageAlt }) => {
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     const handleEscape = (event) => {
       if (event.key === "Escape") {
@@ -33,7 +35,14 @@ const Modal = ({ isOpen, onClose, imageSrc, imageAlt }) => {
       aria-labelledby="modal-title"
     >
       <div className={styles.modal}>
-        <img src={imageSrc} alt={imageAlt} className={styles.modalImage} />
+        {isLoading && <div className={styles.loader}>Loading...</div>}
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          className={styles.modalImage}
+          onLoad={() => setIsLoading(false)}
+          style={{ display: isLoading ? "none" : "block" }}
+        />
         <button
           className={styles.closeButton}
           onClick={onClose}

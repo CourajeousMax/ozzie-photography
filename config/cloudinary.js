@@ -6,8 +6,6 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-
-
 if (
   !process.env.CLOUDINARY_CLOUD_NAME ||
   !process.env.CLOUDINARY_API_KEY ||
@@ -17,12 +15,5 @@ if (
 } else {
   console.log("Cloudinary is configured successfully.");
 }
-
-module.exports = cloudinary;
-
-
-
-
-
 
 module.exports = cloudinary;

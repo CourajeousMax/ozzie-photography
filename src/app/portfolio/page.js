@@ -1,6 +1,4 @@
-// src/app/portfolio/page.js
 import styles from "../../styles/Portfolio.module.css";
-import Navbar from "../../components/Navbar";
 import cloudinary from "../../../config/cloudinary";
 import ImageGrid from "../../components/ImageGrid";
 
@@ -12,24 +10,24 @@ export default async function GalleryPage() {
       .max_results(70)
       .execute();
 
+    if (!results?.resources?.length) {
+      return <div>No images found.</div>;
+    }
+
     return (
       <div className={styles.desktopPortfolioCategories}>
-        <header className={styles.headerWrapper}>
-          <img
-            className={styles.headerIcon}
-            loading="lazy"
-            alt="Signature"
-            src="/signature.png"
-          />
-        </header>
-        <Navbar />
-        <div className={styles.gridColumns}> {/* Changed from .masonry to .gridColumns */}
+        <div className={styles.gridColumns}>
           <ImageGrid images={results.resources} />
         </div>
       </div>
     );
   } catch (error) {
     console.error("Error fetching images from Cloudinary:", error);
-    return <div>Failed to load images.</div>;
+    return (
+      <div className={styles.errorContainer}>
+        <h2>Failed to load images</h2>
+        <p>Please try again later</p>
+      </div>
+    );
   }
 }

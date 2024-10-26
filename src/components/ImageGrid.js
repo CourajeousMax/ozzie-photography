@@ -1,24 +1,24 @@
 // src/components/ImageGrid.js
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import Modal from "./Modal";
 import { CldImage } from "next-cloudinary";
 import styles from "../styles/ImageGrid.module.css";
 
 const ImageGrid = ({ images }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState({ src: "", alt: "" });
+  const [selectedImage, setSelectedImage] = useState(null);
 
-  const openModal = (src, alt) => {
+  const openModal = useCallback((src, alt) => {
     setSelectedImage({ src, alt });
     setIsModalOpen(true);
-  };
+  }, []);
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setIsModalOpen(false);
-    setSelectedImage({ src: "", alt: "" });
-  };
+    setSelectedImage(null);
+  }, []);
 
   return (
     <>
@@ -27,23 +27,32 @@ const ImageGrid = ({ images }) => {
           key={image.public_id}
           className={styles.gridItem}
           onClick={() => openModal(image.secure_url, image.public_id)}
+          role="button"
+          tabIndex={0}
+          onKeyPress={(e) =>
+            e.key === "Enter" && openModal(image.secure_url, image.public_id)
+          }
         >
           <CldImage
             src={image.public_id}
             alt={image.public_id}
-            width={300}
-            height={400}
+            width={image.width || 800} // Use original width or fallback
+            height={image.height || 600} // Use original height or fallback
             className={styles.image}
-            objectFit="cover"
+            loading="lazy"
+            placeholder="blur"
+            blurDataURL={`data:image/svg+xml;base64,...`}
           />
         </div>
       ))}
-      <Modal
-        isOpen={isModalOpen}
-        onClose={closeModal}
-        imageSrc={selectedImage.src}
-        imageAlt={selectedImage.alt}
-      />
+      {selectedImage && (
+        <Modal
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          imageSrc={selectedImage.src}
+          imageAlt={selectedImage.alt}
+        />
+      )}
     </>
   );
 };
