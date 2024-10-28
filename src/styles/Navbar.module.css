@@ -1,86 +1,137 @@
-.header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  background-color: #fff;
-  padding: 20px 0;
-}
-
-.logoContainer {
-  margin-bottom: 20px;
-}
-
-.logo {
-  width: 200px;
-  height: auto;
-}
-
 .navContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 0 20px;
-  text-align: center;
-  font-family: "Sedan SC";
-  text-decoration: none;
-}
-
-.navContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: #fff;
-  width: 100%;
-  padding: 20px;
-  text-align: center;
-  font-family: "Sedan SC";
-  text-decoration: none;
-  margin-bottom: 20px;
-}
-
-.socialIcons {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  margin-top: 15px;
-}
-
-.socialIcon {
-  width: 45px;
-  height: 45px;
-}
-
-.navButton {
-  font-size: 1.5rem;
-  text-decoration: none;
-  color: gray;
-  padding: 0 10px;
+  padding: 1rem;
+  background-color: white;
+  z-index: 100;
 }
 
 .linkContainer {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  gap: 20px;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap; 
+  justify-content: center; 
+}
+
+.linkWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.navLink {
+  position: relative;
   font-size: 1.5rem;
+  text-decoration: none;
+  color: #333;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  white-space: nowrap; 
+}
+
+.navLink:hover {
+  transform: translateY(-2px);
+  color: #0058DD;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: #0058DD;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.navLink:hover::after,
+.active::after {
+  width: 100%;
+}
+
+.active {
+  color: #0058DD;
+}
+
+.separator {
+  color: #666;
+  margin: 0 0.5rem;
+  opacity: 0.5;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 1rem;
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
+  animation-delay: 0.5s;
+}
+
+.socialIcon {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.socialIcon:hover {
+  transform: scale(1.2) rotate(5deg);
+  filter: brightness(1.2);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 768px) {
-  .linkContainer {
-    flex-direction: column;
-    gap: 15px;
+  .navContainer {
+    padding: 0.5rem;
   }
 
-  .socialIcon {
-    width: 35px;
-    height: 35px;
+  .linkContainer {
+    gap: 0.25rem;
+    padding: 0.5rem;
+    justify-content: center;
+  }
+
+  .navLink {
+    font-size: 1.1rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .separator {
+    display: none;
   }
 
   .socialIcons {
-    gap: 15px;
+    gap: 0.5rem;
+  }
+
+  .socialIcon img {
+    width: 35px !important;
+    height: 35px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .navLink {
+    font-size: 1rem;
+    padding: 0.3rem 0.4rem;
   }
 }

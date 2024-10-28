@@ -1,4 +1,3 @@
-// src/app/layout.js
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
@@ -13,12 +12,13 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const isDarkLogo = children?.props?.segment === ""; // Check if we're on the home page
+  const isDarkLogo = children?.props?.segment === ""; 
+  const isHomePage = children?.props?.segment === ""; 
 
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="mainContainer">
+        <div className="mainContainer" data-is-home={isHomePage}>
           <header className="header">
             <div className="logo-container">
               <Link href="/">

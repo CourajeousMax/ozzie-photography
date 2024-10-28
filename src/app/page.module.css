@@ -1,37 +1,103 @@
 .desktopOverview {
-  position: relative;
+  position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   width: 100%;
-  min-height: 100vh;
-  height: 100%;
+  height: 100vh;
   text-decoration: none;
-  overflow: hidden; /* Add this to prevent scrolling only on homepage */
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+  top: 0;
+  left: 0;
+}
+
+.loaded {
+  opacity: 1;
 }
 
 .fullScreenBackground {
   position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100vh;
+  left: -5%; /* CHANGED: Added negative margin */
+  top: -5%; /* CHANGED: Added negative margin */
+  width: 110%; /* CHANGED: Increased width to prevent white edges */
+  height: 110vh; /* CHANGED: Increased height to prevent white edges */
   background: url("/home-background.jpg") no-repeat center center;
   background-size: cover;
   z-index: -1;
+  animation: scaleBackground 1.5s ease-out;
+  transition: transform 0.3s ease-out;
 }
 
-.logo {
-  max-width: 300px;
-  height: auto;
-  z-index: 2;
-}
-
-.headerContent {
-  width: 100%;
+.heroContent {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  padding: 20px;
+  height: 100vh;
   z-index: 1;
+}
+
+.welcomeMessage {
+  position: relative;
+  text-align: center;
+  color: white;
+  animation: slideUp 1s ease-out 0.5s both;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.welcomeMessage h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  opacity: 0;
+  animation: fadeIn 1s ease-out 1s forwards;
+}
+
+.welcomeMessage p {
+  font-size: 1.8rem;
+  opacity: 0;
+  animation: fadeIn 1s ease-out 1.5s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleBackground {
+  from {
+    transform: scale(1.1);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .welcomeMessage h1 {
+    font-size: 2rem;
+  }
+  
+  .welcomeMessage p {
+    font-size: 1.2rem;
+  }
 }

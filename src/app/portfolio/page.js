@@ -1,3 +1,4 @@
+// src/app/portfolio/page.js
 import styles from "../../styles/Portfolio.module.css";
 import cloudinary from "../../../config/cloudinary";
 import ImageGrid from "../../components/ImageGrid";
@@ -16,6 +17,8 @@ export default async function GalleryPage() {
 
     return (
       <div className={styles.desktopPortfolioCategories}>
+        <h1 className={styles.pageTitle}>Portfolio</h1>
+        <p className={styles.pageSubtitle}>Explore My Collection</p>
         <div className={styles.gridColumns}>
           <ImageGrid images={results.resources} />
         </div>

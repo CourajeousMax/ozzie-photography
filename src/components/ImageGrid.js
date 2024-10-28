@@ -1,43 +1,55 @@
 // src/components/ImageGrid.js
 "use client";
-
 import React, { useState, useCallback } from "react";
 import Modal from "./Modal";
-import { CldImage } from "next-cloudinary";
+import CloudinaryImage from "./CloudinaryImage"; // Updated import
 import styles from "../styles/ImageGrid.module.css";
 
 const ImageGrid = ({ images }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
-  const openModal = useCallback((src, alt) => {
-    setSelectedImage({ src, alt });
+  const openModal = useCallback((index) => {
+    setSelectedImageIndex(index);
     setIsModalOpen(true);
   }, []);
 
   const closeModal = useCallback(() => {
     setIsModalOpen(false);
-    setSelectedImage(null);
+    setSelectedImageIndex(null);
+  }, []);
+
+  const navigateImage = useCallback((direction) => {
+    setSelectedImageIndex((currentIndex) => {
+      let newIndex = currentIndex + direction;
+      if (newIndex < 0) newIndex = images.length - 1;
+      if (newIndex >= images.length) newIndex = 0;
+      return newIndex;
+    });
+  }, [images.length]);
+
+  React.useEffect(() => {
+    setIsLoaded(true);
   }, []);
 
   return (
     <>
-      {images.map((image) => (
+      {images.map((image, index) => (
         <div
           key={image.public_id}
-          className={styles.gridItem}
-          onClick={() => openModal(image.secure_url, image.public_id)}
+          className={`${styles.gridItem} ${isLoaded ? styles.loaded : ''}`}
+          style={{ animationDelay: `${index * 0.1}s` }}
+          onClick={() => openModal(index)}
           role="button"
           tabIndex={0}
-          onKeyPress={(e) =>
-            e.key === "Enter" && openModal(image.secure_url, image.public_id)
-          }
+          onKeyPress={(e) => e.key === "Enter" && openModal(index)}
         >
-          <CldImage
+          <CloudinaryImage
             src={image.public_id}
             alt={image.public_id}
-            width={image.width || 800} // Use original width or fallback
-            height={image.height || 600} // Use original height or fallback
+            width={image.width || 800}
+            height={image.height || 600}
             className={styles.image}
             loading="lazy"
             placeholder="blur"
@@ -45,12 +57,16 @@ const ImageGrid = ({ images }) => {
           />
         </div>
       ))}
-      {selectedImage && (
+      {isModalOpen && selectedImageIndex !== null && (
         <Modal
           isOpen={isModalOpen}
           onClose={closeModal}
-          imageSrc={selectedImage.src}
-          imageAlt={selectedImage.alt}
+          imageSrc={images[selectedImageIndex].secure_url}
+          imageAlt={images[selectedImageIndex].public_id}
+          onNext={() => navigateImage(1)}
+          onPrevious={() => navigateImage(-1)}
+          hasNext={selectedImageIndex < images.length - 1}
+          hasPrevious={selectedImageIndex > 0}
         />
       )}
     </>
