@@ -9,6 +9,22 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "Ozzie Gonzalez Photography",
   description: "Professional photography portfolio showcasing landscape, wildlife, and lifestyle photography",
+  icons: {
+    icon: [
+      {
+        url: "/signature-dark.png",
+        sizes: "32x32",
+        type: "image/png"
+      },
+      {
+        url: "/signature-dark.png",
+        sizes: "16x16",
+        type: "image/png"
+      }
+    ],
+    shortcut: "/signature-dark.png",
+    apple: "/signature-dark.png"
+  }
 };
 
 export default function RootLayout({ children }) {

@@ -20,10 +20,10 @@
 
 .fullScreenBackground {
   position: fixed;
-  left: -5%; /* CHANGED: Added negative margin */
-  top: -5%; /* CHANGED: Added negative margin */
-  width: 110%; /* CHANGED: Increased width to prevent white edges */
-  height: 110vh; /* CHANGED: Increased height to prevent white edges */
+  left: -5%;
+  top: -5%;
+  width: 110%; 
+  height: 110vh;
   background: url("/home-background.jpg") no-repeat center center;
   background-size: cover;
   z-index: -1;

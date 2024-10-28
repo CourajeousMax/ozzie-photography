@@ -1,4 +1,3 @@
-// src/components/ImageGrid.js
 "use client";
 import React, { useState, useCallback } from "react";
 import Modal from "./Modal";
