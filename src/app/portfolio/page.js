@@ -1,29 +1,36 @@
+// src/app/portfolio/page.js
 import styles from "../../styles/Portfolio.module.css";
-import Navbar from "../../components/Navbar";
-import cloudinary from "cloudinary";
-import CloudinaryImg from "./cloudinary-list";
-
+import cloudinary from "../../../config/cloudinary";
+import ImageGrid from "../../components/ImageGrid";
 
 export default async function GalleryPage() {
-  const results = await cloudinary.v2.search.expression("folder:ozzie").sort_by("created_at", "desc").max_results(70).execute();
+  try {
+    const results = await cloudinary.search
+      .expression("folder:ozzie")
+      .sort_by("created_at", "desc")
+      .max_results(70)
+      .execute();
 
-  const MAX_COLUMNS = 4;
+    if (!results?.resources?.length) {
+      return <div>No images found.</div>;
+    }
 
-
-  return (
-    <div className={styles.desktopPortfolioCategories}>
-      <header className={styles.headerWrapper}>
-        <img className={styles.headerIcon} loading="lazy" alt="" src="/signature.png" />
-      </header>
-      <Navbar />
-        <div className={styles.masonry}>
-          <div className={styles.gridColumns}>
-            {results &&
-              results.resources.map((result) => (
-                <CloudinaryImg key={result.public_id} src={result.public_id} alt="an image of something" width="300" height="400" />
-              ))}
-          </div>
+    return (
+      <div className={styles.desktopPortfolioCategories}>
+        <h1 className={styles.pageTitle}>Portfolio</h1>
+        <p className={styles.pageSubtitle}>Explore My Collection</p>
+        <div className={styles.gridColumns}>
+          <ImageGrid images={results.resources} />
         </div>
-    </div>
-  );
+      </div>
+    );
+  } catch (error) {
+    console.error("Error fetching images from Cloudinary:", error);
+    return (
+      <div className={styles.errorContainer}>
+        <h2>Failed to load images</h2>
+        <p>Please try again later</p>
+      </div>
+    );
+  }
 }

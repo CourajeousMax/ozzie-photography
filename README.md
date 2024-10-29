@@ -1,36 +1,136 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Ozzie Gonzalez Photography Portfolio
 
-## Getting Started
+A professional photography portfolio website built with Next.js, showcasing landscape, wildlife, and lifestyle photography. Features include a responsive image gallery, workshop booking information, and contact form integration.
 
-First, run the development server:
+## 🌟 Features
 
+- Responsive image gallery with modal view and navigation
+- Image optimization using Next.js Image and Cloudinary
+- Smooth page transitions and animations
+- Mobile-first responsive design
+- Contact form with FormSubmit integration
+- Workshop booking information
+- Social media integration
+- SEO optimized
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 14
+- **Styling**: CSS Modules & SCSS
+- **Image Hosting**: Cloudinary
+- **Form Handling**: FormSubmit
+- **Animation**: Custom CSS animations
+- **Deployment**: Vercel (recommended)
+
+## 📦 Prerequisites
+
+Before you begin, ensure you have the following installed:
+- Node.js (v16.x or higher)
+- npm or yarn
+- A Cloudinary account
+
+## 🚀 Getting Started
+
+1. **Clone the repository**
+```bash
+git clone https://github.com/CourajeousMax/ozzie-photography.git
+cd ozzie
+```
+
+2. **Install dependencies**
+```bash
+npm install
+# or
+yarn install
+```
+
+3. **Set up environment variables**
+Create a `.env.local` file in the root directory with the following variables:
+```env
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
+```
+
+4. **Run the development server**
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. **Open [http://localhost:3000](http://localhost:3000)**
+The application should now be running on your local machine.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```
+.
+├── config/             # Configuration files
+├── public/            # Static assets
+│   ├── optimized/    # Optimized images
+│   └── ...
+├── src/
+│   ├── app/          # Next.js app directory
+│   ├── components/   # React components
+│   ├── fonts/        # Custom fonts
+│   └── styles/       # CSS and SCSS files
+```
 
-## Learn More
+## 🎨 Key Components
 
-To learn more about Next.js, take a look at the following resources:
+- `ImageGrid`: Responsive image grid with modal view
+- `Modal`: Image modal with navigation
+- `CloudinaryImage`: Optimized image component
+- `Navbar`: Navigation component with social links
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🌐 Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+The easiest way to deploy this application is through [Vercel](https://vercel.com):
 
-## Deploy on Vercel
+1. Push your code to a GitHub repository
+2. Import your project to Vercel
+3. Add your environment variables in the Vercel dashboard
+4. Deploy!
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🔧 Configuration
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Cloudinary Setup
+
+1. Create a Cloudinary account
+2. Create a new folder named "ozzie" in your Cloudinary media library
+3. Upload your images to this folder
+4. Add your Cloudinary credentials to `.env.local`
+
+### Form Submission
+
+The contact form uses FormSubmit. No additional setup is required as it's pre-configured in the contact page component.
+
+## 🎯 Performance Optimizations
+
+- Images are automatically optimized through Next.js Image and Cloudinary
+- CSS is modularized to prevent style conflicts
+- Lazy loading implemented for images
+- Smooth animations with hardware acceleration
+- Responsive images with appropriate sizes
+
+## 🌟 Contributing
+
+1. Fork the repository
+2. Create a new branch
+3. Make your changes
+4. Submit a pull request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the LICENSE file for details
+
+## 🙏 Credits
+
+- Created by Max Munez & Josue Jeronimo
+- Photography by Ozzie Gonzalez
+- Icons from Icons8
+
+## 📞 Support
+
+For support, email [josuejero@hotmail.com] or open an issue in the repository.

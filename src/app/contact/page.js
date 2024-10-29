@@ -1,62 +1,113 @@
-import React from "react";
-import Link from "next/link";
-import Image from "next/image";
-import Logo from "../../../public/signature-dark.png";
-import Navbar from "../../components/Navbar";
-import ContactForm from "../../components/ContactForm";
-import "../../styles/Contact.scss";
-const page = () => {
-  return (
-    <>
-      <section className="contact">
-        <div className="contact__logo-container">
-          <Link href="/">
-            <Image className="contact__logo" src={Logo} alt="Ozzie's Logo" height={150} width={200}></Image>
-          </Link>
-          <Navbar />
-        </div>
-        <div className="contact__content">
-          <div className="contact__container">
-            <h1 className="contact__text"> Lets navigate the seas of opportunity together!</h1>
-          </div>
-          <div className="contact__container">
-            <p className="contact__paragraph">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ullamcorper sapien ut mauris fermentum, vitae scelerisque urna dapibus.
-              Nulla facilisi. Integer id turpis nec nisi vehicula tempus. Morbi venenatis, justo eu placerat luctus, nulla libero fermentum tortor,
-              vitae dignissim dui turpis id risus. Nulla facilisi. Suspendisse at fringilla sapien. Quisque et massa nec nulla commodo ultrices. In
-              hac habitasse platea dictumst. Sed in aliquam libero. Vivamus nec felis ut ante tincidunt tempor. Curabitur aliquet efficitur sem, sit
-              amet consequat odio gravida a. Sed suscipit lacus vitae sapien tincidunt, at molestie eros tincidunt. Sed nec pharetra eros. Sed sodales
-              pharetra ex, vitae placerat lorem vehicula nec. Etiam tempor felis eu vehicula suscipit.
-            </p>
-          </div>
-        </div>
+'use client';
+import React, { useState, useEffect } from "react";
+import styles from "../../styles/Contact.module.css";
 
-        <article className="contact__content">
-          <form className="contact__form" action="https://formsubmit.co/7d373894c22552f7b2056bcfa9178c5b" method="POST">
-            <p>Send a message in a bottle our way!</p>
-            <h2 className="contact__text">Contact Us</h2>
-            <div className="contact__container">
-              <ContactForm label="Name:" name="Name" type="text" id="name" />
-              <ContactForm label="Phone Number:" name="Phone Number" type="tel" id="phoneNumber" />
-              <ContactForm label="Email:" name="Email" type="email" id="email" />
-              <ContactForm label="Message:" name="Message" type="text" id="Message" />
-              <button className="contact__form-button button">Set Sail</button>
-            </div>
-          </form>
-        </article>
-        <div className="contact__content">
-          <h2 className="contact__text">Contact:</h2>
-          <a className="contact__subtext" href="tel:3055103802">
-            (305)-510-3802
-          </a>
-          <br />
-          <a className="contact__subtext" href="mailto: captozzie@hotmail.com">
-            captozzie@hotmail.com{" "}
-          </a>
-        </div>
-      </section>
-    </>
+const ContactForm = ({ label, name, type, id }) => {
+  const getInputProps = () => {
+    const props = {
+      id,
+      type,
+      name,
+      placeholder: `Enter your ${label.toLowerCase().replace(':', '')}`,
+      className: styles.input,
+      required: true,
+    };
+
+    if (type === "email") {
+      props.pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$";
+    }
+    if (type === "tel") {
+      props.minLength = 10;
+      props.pattern = "[0-9]{10}";
+    }
+
+    return props;
+  };
+
+  return (
+    <div className={styles.inputBox}>
+      <label htmlFor={id} className={styles.inputLabel}>
+        {label}
+      </label>
+      <input {...getInputProps()} />
+      {type === "tel" && (
+        <small style={{ color: 'rgba(255,255,255,0.6)' }}>
+          Format: 1234567890
+        </small>
+      )}
+    </div>
   );
 };
 
-export default page;
+const Contact = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
+  return (
+    <section className={`${styles.contact} ${isLoaded ? styles.loaded : ''}`}>
+      <div className={styles.hero}>
+        <h1 className={styles.title}>Let's Navigate the Seas of Opportunity Together!</h1>
+        <p className={styles.subtitle}>Capture Your Perfect Moment</p>
+      </div>
+
+      <div className={styles.wrapper}>
+        <article className={styles.formSection}>
+          <div className={styles.formContainer}>
+            <h2 className={styles.formTitle}>Send a Message</h2>
+            <form
+              className={styles.form}
+              action="https://formsubmit.co/7d373894c22552f7b2056bcfa9178c5b"
+              method="POST"
+            >
+              <div className={styles.formGrid}>
+                <ContactForm label="Name:" name="Name" type="text" id="name" />
+                <ContactForm
+                  label="Phone Number:"
+                  name="Phone Number"
+                  type="tel"
+                  id="phoneNumber"
+                />
+                <ContactForm
+                  label="Email:"
+                  name="Email"
+                  type="email"
+                  id="email"
+                />
+                <ContactForm
+                  label="Message:"
+                  name="Message"
+                  type="text"
+                  id="Message"
+                />
+              </div>
+              <button className={styles.submitButton}>Set Sail →</button>
+            </form>
+          </div>
+        </article>
+
+        <div className={styles.info}>
+          <div className={styles.infoContainer}>
+            <h2 className={styles.infoTitle}>Get in Touch</h2>
+            <div className={styles.infoItem}>
+              <i className={styles.infoIcon}>📱</i>
+              <a className={styles.infoLink} href="tel:3055103802">
+                (305)-510-3802
+              </a>
+            </div>
+            <div className={styles.infoItem}>
+              <i className={styles.infoIcon}>📧</i>
+              <a className={styles.infoLink} href="mailto:captozzie@hotmail.com">
+                captozzie@hotmail.com
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Contact;
