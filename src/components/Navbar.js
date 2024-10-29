@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import styles from "../styles/Navbar.module.css";
-import { Dropdown, DropdownTrigger, DropdownMenu, DropdownSection, DropdownItem } from "@nextui-org/dropdown";
+// import { Dropdown, DropdownTrigger, DropdownMenu, DropdownSection, DropdownItem } from "@nextui-org/dropdown";
 const Navbar = () => {
   return (
     <div className={styles.navContainer}>
@@ -10,11 +10,10 @@ const Navbar = () => {
           <a className={styles.navButton}>home</a>
         </Link>
         /
-        <Dropdown>
-          <DropdownTrigger>
         <Link legacyBehavior href="/portfolio">
           <a className={styles.navButton}>Portfolio</a>
         </Link>
+        {/*
           </DropdownTrigger>
           <DropdownMenu aria-label="Static Actions">
             <DropdownItem key="new">New file</DropdownItem>
@@ -24,7 +23,7 @@ const Navbar = () => {
               Delete file
             </DropdownItem>
           </DropdownMenu>
-        </Dropdown>
+        </Dropdown> */}
         /
         <Link legacyBehavior href="/workshops">
           <a className={styles.navButton}>Workshops</a>
